@@ -19,16 +19,25 @@ public class OceanSponge extends Applet implements KeyListener  {
 		
 	}
 
-	
-	public void keyReleased(KeyEvent e) {
-	
+	private void drawAnimal(Graphics g)
+	{
 		
 	}
+	
+	private void drawHabitat(Graphics g)
+	{
+		
+	}
+	
+	public void keyReleased(KeyEvent e) {
 
+		
+	}
 	
 	public void keyTyped(KeyEvent e) {
 		
 		
 	}
+
 
 }
