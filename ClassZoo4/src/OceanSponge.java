@@ -13,7 +13,7 @@ public class OceanSponge extends Applet implements KeyListener  {
 		drawHabitat(g);
 		g.setColor(Color.yellow);
 		Spongebob=g.create();
-		Spongebob.fillRect(getWidth()/10, getHeight()/5, 10, 20);
+		Spongebob.fillRect(getWidth()/10, getHeight()/5, 100, 400);
 	}
 	
 	public void keyPressed(KeyEvent arg0) {
