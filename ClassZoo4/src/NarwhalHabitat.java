@@ -6,7 +6,6 @@ public class AnimalTemp extends Applet{
 	public void paint(Graphics g)
 	{
 		drawAnimal(g);
-		drawHabitat(g);
 	}
 
 	private void drawAnimal(Graphics g)
@@ -16,6 +15,10 @@ public class AnimalTemp extends Applet{
 	
 	private void drawHabitat(Graphics g)
 	{
-		
+
+		g.drawRect(10,10,800,800);
+		g.drawOval(300,300,100,100);
+		g.setColor(Color.white);
+
 	}
 }
