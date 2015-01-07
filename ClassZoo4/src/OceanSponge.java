@@ -2,12 +2,13 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 public class OceanSponge extends Applet implements KeyListener  {
+	
 	public void init(){
 		addKeyListener( this );
 	}
+	
 	public void paint(Graphics g){
-		g.setColor(new Color(155,155,255));
-		g.fillRect(0,0,getWidth(),getHeight());
+		drawHabitat(g);
 	}
 	
 	public void keyPressed(KeyEvent arg0) {
@@ -19,14 +20,15 @@ public class OceanSponge extends Applet implements KeyListener  {
 		
 	}
 
-	private void drawAnimal(Graphics g)
+	private void drawAnimal(Graphics g,Character key)
 	{
 		
 	}
 	
 	private void drawHabitat(Graphics g)
 	{
-		
+		g.setColor(new Color(155,155,255));
+		g.fillRect(0,0,getWidth(),getHeight());
 	}
 	
 	public void keyReleased(KeyEvent e) {
