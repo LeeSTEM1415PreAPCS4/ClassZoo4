@@ -42,30 +42,35 @@ public class OceanSponge extends Applet implements KeyListener  {
 		 width=getWidth()/5;
 		 height=getHeight()/5;
 		Spongebob.fillRect(x-width, y-height, width, height);
+		draw_Inside();
 		}else if(key=='A'||key=='a'){
 		Spongebob.setColor(new Color(155,155,255));
 		Spongebob.fillRect(x-width, y-height, width, height);
 		Spongebob.setColor(Color.yellow);
 		x-=5;
 		Spongebob.fillRect(x-width, y-height, width, height);
+		draw_Inside();
 		}else if(key=='D'||key=='d'){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			Spongebob.setColor(Color.yellow);
 			x+=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
+			draw_Inside();
 		}else if(key=='w'||key=='W'){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			Spongebob.setColor(Color.yellow);
 			y-=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
+			draw_Inside();
 		}else if(key=='s'||key=='S'){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			Spongebob.setColor(Color.yellow);
 			y+=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
+			draw_Inside();
 		}
 		if(x==0-width){
 			Spongebob.setColor(new Color(155,155,255));
@@ -73,35 +78,43 @@ public class OceanSponge extends Applet implements KeyListener  {
 			x=getWidth()-5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
+			draw_Inside();
 		}else if(x==getWidth()+width){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			x=0+5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
-		}else if(y==0+height){
+			draw_Inside();
+		}else if(y==0-height){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			y=getHeight();
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
-		}else if(y==getHeight()-height){
+			draw_Inside();
+		}else if(y==getHeight()+height){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			y=0;
+			y=0+height;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
+			draw_Inside();
 		}
 	}
-	
+	//			Spongebob.fillOval((x-width)+(int)Math.random()*10, (y-height)+(int)Math.random()*10, 10, 10);
 	private void drawHabitat(Graphics g)
 	{
 		g.setColor(new Color(155,155,255));
 		g.fillRect(0,0,getWidth(),getHeight());
 	}
-	
+	public void draw_Inside(){
+		for(int i=1;i>20;i++){
+		Spongebob.fillOval((x-width)+(int)Math.random()*10, (y-height)+(int)Math.random()*10, 10, 10);
+		}
+	}
 	public void keyReleased(KeyEvent e) {
-		System.out.println(e.getKeyChar());
+		//System.out.println(e.getKeyChar());
 		
 	}
 	
