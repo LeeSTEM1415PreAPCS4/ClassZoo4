@@ -37,10 +37,10 @@ public class OceanSponge extends Applet implements KeyListener  {
 		if(key=='N'){
 		Spongebob=g.create();
 		Spongebob.setColor(Color.yellow);
-		 x=getWidth();
-		 y=getHeight();
-		 width=getWidth()/5;
-		 height=getHeight()/5;
+		  x=getWidth();
+		  y=getHeight();
+		  width=getWidth()/5;
+		  height=getHeight()/5;
 		Spongebob.fillRect(x-width, y-height, width, height);
 		draw_Inside();
 		}else if(key=='A'||key=='a'){
@@ -73,31 +73,31 @@ public class OceanSponge extends Applet implements KeyListener  {
 			draw_Inside();
 			
 		}
-		if(x==0-width||x==0){
+		if(x==0-width){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			x=getWidth()-5;
+			 x=(int)getWidth()-5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
-		}else if(x==getWidth()+width||x==getWidth()){
+		}else if(x==(int)getWidth()+width){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			x=0+5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
-		}else if(y==0-height||y==0){
+		}else if(y==0-height){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			y=getHeight();
+			 y=(int)getHeight();
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
-		}else if(y==getHeight()+height||y==getHeight()){
+		}else if(y==(int)getHeight()+height){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			y=0+height;
+			 y=0+height;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
@@ -113,7 +113,8 @@ public class OceanSponge extends Applet implements KeyListener  {
 	{
 		Spongebob.setColor(new Color(204,204,0));
 		for(int i=0;i<=50;i++){
-		Spongebob.fillOval((x-width)+(int)(Math.random()*(width-10)), (y-height)+(int)(Math.random()*(height-10)), 10, 10);
+		int size=(int)(Math.random()*10);
+		Spongebob.fillOval((x-width)+(int)(Math.random()*(width-size)), (y-height)+(int)(Math.random()*(height-size)), size, size);
 		}
 	}
 	public void keyReleased(KeyEvent e) {
