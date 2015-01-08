@@ -85,6 +85,12 @@ public class OceanSponge extends Applet implements KeyListener  {
 			y=getHeight();
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
+		}else if(y==getHeight()-height){
+			Spongebob.setColor(new Color(155,155,255));
+			Spongebob.fillRect(x-width, y-height, width, height);
+			y=0;
+			Spongebob.setColor(Color.yellow);
+			Spongebob.fillRect(x-width, y-height, width, height);
 		}
 	}
 	
