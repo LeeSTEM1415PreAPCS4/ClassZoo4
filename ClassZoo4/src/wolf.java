@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.applet.*;
 
-public class AnimalTemp extends Applet{
+public class wolf extends Applet{
 	
 	public void paint(Graphics g)
 	{
@@ -16,6 +16,7 @@ public class AnimalTemp extends Applet{
 	
 	private void drawHabitat(Graphics g)
 	{
-		
+		g.setColor(new Color(100, 150, 255));
+		g.drawRect(0, 0, 800, 350);
 	}
 }
