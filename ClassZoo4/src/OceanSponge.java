@@ -71,6 +71,7 @@ public class OceanSponge extends Applet implements KeyListener  {
 			y+=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
+			
 		}
 		if(x==0-width){
 			Spongebob.setColor(new Color(155,155,255));
@@ -108,10 +109,12 @@ public class OceanSponge extends Applet implements KeyListener  {
 		g.setColor(new Color(155,155,255));
 		g.fillRect(0,0,getWidth(),getHeight());
 	}
-	public void draw_Inside(){
-		for(int i=1;i>=20;i++){
-			Spongebob.setColor(new Color(204,204,0));
-		Spongebob.fillOval((x-width)+(int)Math.random()*10, (y-height)+(int)Math.random()*10, 10, 10);
+	public void draw_Inside()
+	{
+		Spongebob.setColor(new Color(255,0,0));
+		for(int i=0;i>=20;i++){
+			
+		Spongebob.fillOval(x+1, y-1, 100, 100);
 		}
 	}
 	public void keyReleased(KeyEvent e) {
