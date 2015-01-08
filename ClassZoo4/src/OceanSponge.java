@@ -49,25 +49,25 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.setColor(new Color(155,155,255));
 		Spongebob.fillRect(x-width, y-height, width, height);
 		Spongebob.setColor(Color.yellow);
-		x=x-5;
+		x-=5;
 		Spongebob.fillRect(x-width, y-height, width, height);
 		}else if(key=='D'||key=='d'){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			Spongebob.setColor(Color.yellow);
-			x=x+5;
+			x+=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
 		}else if(key=='w'||key=='W'){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			Spongebob.setColor(Color.yellow);
-			y=y-5;
+			y-=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
 		}else if(key=='s'||key=='S'){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			Spongebob.setColor(Color.yellow);
-			y=y+5;
+			y+=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
 		}
 	}
