@@ -101,7 +101,7 @@ public class OceanSponge extends Applet implements KeyListener  {
 	}
 	
 	public void keyReleased(KeyEvent e) {
-
+		System.out.println(e.getKeyChar());
 		
 	}
 	
