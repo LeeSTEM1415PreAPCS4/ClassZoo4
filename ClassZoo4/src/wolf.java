@@ -16,6 +16,7 @@ public class wolf extends Applet{
 	
 	private void drawHabitat(Graphics g)
 	{
-		
+		g.setColor(new Color(100, 150, 255));
+		g.drawRect(0, 0, 800, 350);
 	}
 }
