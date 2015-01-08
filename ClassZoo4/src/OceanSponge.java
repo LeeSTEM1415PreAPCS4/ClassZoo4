@@ -13,7 +13,8 @@ public class OceanSponge extends Applet implements KeyListener  {
 	public void paint(Graphics g){
 		drawHabitat(g);
 		drawAnimal(g, 'N');
-
+		getWidth();
+		getHeight();
 		
 	}
 	
@@ -66,22 +67,22 @@ public class OceanSponge extends Applet implements KeyListener  {
 			y+=5;
 			Spongebob.fillRect(x-width, y-height, width, height);
 		}
-		if(x-width==0){
+		if(x==0-width){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			x+=5;
+			x=getWidth()-5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
-		}else if(x==getWidth()){
+		}else if(x==getWidth()+width){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			x-=5;
+			x=0+5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
-		}else if(y==0){
+		}else if(y==0+height){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			y+=5;
+			y=getHeight();
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 		}
