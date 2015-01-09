@@ -24,6 +24,9 @@ public class NarwhalHabitat extends Applet{
 		horn.addPoint(575,190);
 		horn.addPoint(515,270);
 		g.fillPolygon(horn);
+		//Stripes on Horn
+		g.setColor(new Color(252,190,88));
+		g.drawArc(510,236,27,15,180,-180);
 	}
 	
 	private void drawHabitat(Graphics g)
