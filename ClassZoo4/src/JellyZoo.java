@@ -40,7 +40,11 @@ public class JellyZoo extends Applet{
 	    g.fillOval(560, 330, 40, 3);
 	    g.fillOval(600, 400, 50, 5);
 	    g.fillOval(700, 330, 35, 6);
-	  
+	    // shadow
+	    Color circleShadow = new Color (88, 20, 88);
+	    g.setColor(circleShadow);
+	    g.fillArc(525, 315, 120, 205, 115, 10);
+	    
 	    
 }
 	
@@ -59,6 +63,15 @@ public class JellyZoo extends Applet{
 			g.fillOval(1060, 300, 20, 20);
 			g.fillOval(1100, 200, 20, 20);
 			g.fillOval(1200, 400, 100, 100);
+			
+	//Jelly Jar
+			g.fillRoundRect(650, 600, 100, 150, 20, 15);
+			g.setColor(Color.RED);
+			g.fillRect(650,625,100,50);
+			g.setColor(Color.WHITE);
+			g.drawString("Jelly", 680, 655);
+			
+			
 		
 	}
 }
