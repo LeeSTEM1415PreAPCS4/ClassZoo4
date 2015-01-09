@@ -11,11 +11,13 @@ public class NarwhalHabitat extends Applet{
 
 	private void drawAnimal(Graphics g)
 	{
-		
+		//Body
 		g.setColor(new Color(109,141,145));
+		//Head
 		g.fillArc(350,200,175,300,180,-135);
 		//g.setColor(Color.black);
 		g.fillArc(410,229,105,105,45,-155);
+		//Horn
 		g.setColor(new Color(235,247,200));
 		Polygon horn = new Polygon();
 		horn.addPoint(500,250);
