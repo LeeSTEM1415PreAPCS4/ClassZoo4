@@ -128,7 +128,7 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.fillOval((x-width)+width/5, (y-height)+width/5, width/5, height/5);
 		Spongebob.fillOval((x-width)+width/2, (y-height)+width/5, width/5, height/5);
 		RArm.addPoint(x-width+(width*2), y-height+(height/5));
-		RArm.addPoint(x, y);
+		//RArm.addPoint(x, y);
 		RArm.addPoint(x+(width/5), y+(height/5));
 		RArm.addPoint(x-width-(width/5), y-height+(height/5));
 		Spongebob.setColor(Color.red);
