@@ -23,7 +23,7 @@ public class wolf extends Applet{
 		g.fillRect(0, 0, getWidth(), (int) (getHeight() * .65));
 		
 		//draw the ground
-		g.setColor(new Color(100, 150, 255));
+		g.setColor(new Color(100, 255, 155));
 		g.fillRect(0, (int) (getHeight() * .65), getWidth(), (int)(getHeight() - (getHeight() * .65)));
 		
 	}
