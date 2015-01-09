@@ -2,6 +2,10 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 public class OceanSponge extends Applet implements KeyListener  {
+	Polygon RArm= new Polygon();
+	Polygon LArm= new Polygon();
+	Polygon RLeg= new Polygon();
+	Polygon LLeg= new Polygon();
 	 Graphics Spongebob;
 	public void init(){
 		
@@ -31,6 +35,7 @@ public class OceanSponge extends Applet implements KeyListener  {
 	 int y=0;
 	 int width=0;
 	 int height=0;
+	 
 	private void drawAnimal(Graphics g,Character key)
 	{
 
@@ -74,36 +79,36 @@ public class OceanSponge extends Applet implements KeyListener  {
 			
 		}
 		
-		if(x==0-width){
+		if(x<=0-width){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			 x=(int)getWidth()-5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
-		}else if(x==(int)getWidth()+width){
+		}else if(x>=(int)getWidth()+width){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			x=0+5;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
-		}else if(y==0-height){
+		}else if(y<=0-height){
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
 			 y=(int)getHeight();
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
-		}else if(y==(int)getHeight()+height){
+		}else if(y>=(int)getHeight()+height){
+			
 			Spongebob.setColor(new Color(155,155,255));
 			Spongebob.fillRect(x-width, y-height, width, height);
-			 y=0+height;
+			 y=height;
 			Spongebob.setColor(Color.yellow);
 			Spongebob.fillRect(x-width, y-height, width, height);
 			draw_Inside();
 		}
-	
 	}
 	//			Spongebob.fillOval((x-width)+(int)Math.random()*10, (y-height)+(int)Math.random()*10, 10, 10);
 	private void drawHabitat(Graphics g)
@@ -116,13 +121,18 @@ public class OceanSponge extends Applet implements KeyListener  {
 
 		Spongebob.setColor(new Color(204,204,0));
 		for(int i=0;i<=50;i++){
-		int size=(int)(Math.random()*10);
+		int size=(int)(Math.random()*(width/10));
 		Spongebob.fillOval((x-width)+(int)(Math.random()*(width-size)), (y-height)+(int)(Math.random()*(height-size)), size, size);
 		}
 		Spongebob.setColor(new Color(255,255,255));
 		Spongebob.fillOval((x-width)+width/5, (y-height)+width/5, width/5, height/5);
 		Spongebob.fillOval((x-width)+width/2, (y-height)+width/5, width/5, height/5);
-		
+		RArm.addPoint(x-width+(width*2), y-height+(height/5));
+		//RArm.addPoint(x, y);
+		RArm.addPoint(x+(width/5), y+(height/5));
+		RArm.addPoint(x-width-(width/5), y-height+(height/5));
+		Spongebob.setColor(Color.red);
+		Spongebob.fillPolygon(RArm);
 	}
 	public void keyReleased(KeyEvent e) {
 		//System.out.println(e.getKeyChar());
