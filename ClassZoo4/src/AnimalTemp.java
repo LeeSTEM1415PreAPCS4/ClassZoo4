@@ -5,8 +5,8 @@ public class AnimalTemp extends Applet{
 	
 	public void paint(Graphics g)
 	{
-		drawAnimal(g);
 		drawHabitat(g);
+		drawAnimal(g);
 	}
 
 	private void drawAnimal(Graphics g)
