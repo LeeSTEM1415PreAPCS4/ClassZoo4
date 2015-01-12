@@ -6,13 +6,17 @@ public class OceanSponge extends Applet implements KeyListener  {
 	Polygon LArm= new Polygon();
 	Polygon RLeg= new Polygon();
 	Polygon LLeg= new Polygon();
-	Polygon LShoulder=new Polygon();
-	Polygon RShoulder=new Polygon();
+	Polygon LShoulder =new Polygon();
+	Polygon RShoulder =new Polygon();
+	Polygon LSock = new Polygon();
+	Polygon RSock =new Polygon();
+	Polygon LRStripe = new Polygon();
+	Polygon RRStripe = new Polygon();
+	Polygon LBStripe = new Polygon();
+	Polygon RBStripe = new Polygon();
 	 Graphics Spongebob;
 	public void init(){
-		
 		addKeyListener( this );
-		
 	}
 	
 	
@@ -50,10 +54,11 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.fillPolygon(RShoulder);
 		Spongebob.fillRect(x-width, y-height, width, height);
 		if(key=='N'){
-		  x=getWidth();
-		  y=getHeight();
 		  width=getWidth()/5;
 		  height=getHeight()/5;
+		  x=getWidth();
+		  y=getHeight()-((int)(height*.25));
+
 		}else if(key=='A'||key=='a'){
 		x-=5;
 		}else if(key=='D'||key=='d'){
@@ -115,9 +120,18 @@ public class OceanSponge extends Applet implements KeyListener  {
 		RShoulder.reset();
 		RShoulder.addPoint(x, y-(int)(height*YLocoSh));
 		RShoulder.addPoint(x+(int)(width*.15), y-(int)(height*YLocoSh));
-		RShoulder.addPoint(x+(int)(width*.15),y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x+(int)(width*.15),y-(int)(height*(YLocoSh-0.1)));
 		RShoulder.addPoint(x, y-(int)(height*(YLocoSh-0.1)));
-
+		////////////////////////////////////////////////////
+		Spongebob.fillRect(x-((int)(width*.2)), y, 1, 1);
+		Spongebob.fillRect(x-((int)(width*.3)), y, 1, 1);
+		Spongebob.fillRect(x-((int)(width*.2)), y+((int)(width*.4)), 1, 1);
+		Spongebob.fillRect(x-((int)(width*.3)), y+((int)(width*.4)), 1, 1);
+		//LLeg.reset();
+		//LLeg.addPoint(xmultiplier, ymultiplier);
+		//LLeg.addPoint();
+		//LLeg.addPoint(xmultiplier, ymultiplier);
+		//LLeg.addPoint();
 		Spongebob.setColor(Color.yellow);
 		Spongebob.fillPolygon(LArm);
 		Spongebob.setColor(Color.white);
