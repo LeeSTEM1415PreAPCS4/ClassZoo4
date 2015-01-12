@@ -2,15 +2,30 @@ import java.awt.*;
 import java.applet.*;
 
 
-public class JellyZoo {
+public class JellyZoo extends Applet{
 	public void paint(Graphics g)
 	{
+		
 		drawAnimal(g);
 		drawHabitat(g);
 	}
 
 	private void drawAnimal(Graphics g)
-	{
+	{   //legs and or tentacle things those things are weird
+		Color noodle = new Color (173,58,250);
+		g.setColor(noodle);
+		g.drawString("nyoom nyoom im a jelly fish imma sting u", 290, 450);
+		g.drawRect(840, 330, 100, 1);
+		g.drawRect(940, 332, 100, 1);
+		g.drawRect(800,350,100,1);
+		g.drawRect(900,350,1,20);
+		g.drawRect(900,370,100,1);
+		g.drawRect(725, 390, 100, 1);
+		g.drawRect(825, 380, 1, 10);
+		g.drawRect(825, 380, 50, 1);
+		g.drawRect(680, 411, 100, 1);
+		g.drawRect(780, 413, 100, 1);
+		
 		//body
 		Color base = new Color (217, 80, 254);
 		Color highlight = new Color (249, 143, 251);
@@ -25,23 +40,38 @@ public class JellyZoo {
 	    g.fillOval(560, 330, 40, 3);
 	    g.fillOval(600, 400, 50, 5);
 	    g.fillOval(700, 330, 35, 6);
-	    //legs
+	    // shadow
+	    Color circleShadow = new Color (88, 20, 88);
+	    g.setColor(circleShadow);
+	    g.fillArc(525, 315, 120, 205, 115, 10);
+	    
+	    
 }
 	
 	private void drawHabitat(Graphics g)
 	{
 	//water
 		Color ocean = new Color (18, 38, 107);
-			setBackground(ocean);
+		setBackground(ocean);
+		
 	//bubbles
 		g.setColor(Color.WHITE);
-			g.fillOval(30, 50, 20, 20);
-			g.fillOval(1000, 50, 20, 20);
-			g.fillOval(1300, 600, 20, 20);
-			g.fillOval(300, 400, 20, 20);
-			g.fillOval(100, 300, 20, 20);
-			g.fillOval(400, 200, 20, 20);
-			g.fillOval(1200, 200, 100, 100);
+			g.fillOval(970, 500, 20, 20);
+			g.fillOval(1000, 600, 20, 20);
+			g.fillOval(1180, 560, 20, 20);
+			g.fillOval(1050, 400, 20, 20);
+			g.fillOval(1060, 300, 20, 20);
+			g.fillOval(1100, 200, 20, 20);
+			g.fillOval(1200, 400, 100, 100);
+			
+	//Jelly Jar
+			g.fillRoundRect(650, 600, 100, 150, 20, 15);
+			g.setColor(Color.RED);
+			g.fillRect(650,625,100,50);
+			g.setColor(Color.WHITE);
+			g.drawString("Jelly", 680, 655);
+			
+			
 		
 	}
 }
