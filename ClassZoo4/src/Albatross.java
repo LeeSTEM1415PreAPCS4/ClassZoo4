@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -21,13 +22,29 @@ public class Albatross extends Applet implements Runnable, MouseListener{
      
     boolean flying = false;
     
+    Polygon Flying = new Polygon();
+    Polygon NotFlying = new Polygon();
+    
     Point[] locationsToLand = new Point[]{
     	new Point(0, 0),
     	new Point(70, 70),
     	new Point(140, 140),
     };
-     
+    
+    public void setUpPolygons(){
+    	Flying.addPoint(0, 0);
+    	Flying.addPoint(20, 0);
+    	Flying.addPoint(20, 20);
+    	Flying.addPoint(0, 20);
+    	
+    	NotFlying.addPoint(0, 0);
+    	NotFlying.addPoint(20, 0);
+    	NotFlying.addPoint(20, 20);
+    	NotFlying.addPoint(0, 20);
+    }
+    
     public void init() { 
+    	setUpPolygons();
     	dim = getSize(); 
         setBackground(Color.white); 
         offscreen = createImage(dim.width,dim.height); 
@@ -44,23 +61,31 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 	
 	public void draw(){
 		bufferGraphics.clearRect(0, 0, 1000, 1000);
-		bufferGraphics.fillRect(0, 0, 30, 30);
 		drawHabitat(bufferGraphics);
 		drawAnimal(bufferGraphics);
+		for(int i = 0; i < Math.max(getSize().width, getSize().height); i+= 15){
+			bufferGraphics.setColor(Color.gray);
+			bufferGraphics.drawLine(i, 0, i, getSize().height);
+			bufferGraphics.drawLine(0, i, getSize().width, i);
+		}
 	}
 	
 	private void drawAnimal(Graphics g){
 		g.setColor(Color.white);
+		Polygon draw = new Polygon();
 		if(flying){
-			g.fillOval(animx, animy, 20, 10);
-			g.setColor(Color.black);
-			g.drawOval(animx, animy, 20, 10);
+			for(int i = 0; i < Flying.npoints; i++){
+				draw.addPoint(animx + Flying.xpoints[i], animx + Flying.ypoints[i]);
+			}
 		}
 		else {
-			g.fillOval(animx, animy, 10, 20);
-			g.setColor(Color.black);
-			g.drawOval(animx, animy, 10, 20);
+			for(int i = 0; i < NotFlying.npoints; i++){
+				draw.addPoint(animx + NotFlying.xpoints[i], animx + NotFlying.ypoints[i]);
+			}
 		}
+		g.fillPolygon(draw);
+		g.setColor(Color.black);
+		g.drawPolygon(draw);
 	}
 	
 	private void drawHabitat(Graphics g)
