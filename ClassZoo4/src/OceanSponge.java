@@ -14,6 +14,8 @@ public class OceanSponge extends Applet implements KeyListener  {
 	Polygon RRStripe = new Polygon();
 	Polygon LBStripe = new Polygon();
 	Polygon RBStripe = new Polygon();
+	Polygon RShoe = new Polygon();
+	Polygon LShoe = new Polygon();
 	 Graphics Spongebob;
 	public void init(){
 		addKeyListener( this );
@@ -122,21 +124,81 @@ public class OceanSponge extends Applet implements KeyListener  {
 		RShoulder.addPoint(x+(int)(width*.15), y-(int)(height*YLocoSh));
 		RShoulder.addPoint(x+(int)(width*.15),y-(int)(height*(YLocoSh-0.1)));
 		RShoulder.addPoint(x, y-(int)(height*(YLocoSh-0.1)));
-		////////////////////////////////////////////////////
-		Spongebob.fillRect(x-((int)(width*.2)), y, 1, 1);
-		Spongebob.fillRect(x-((int)(width*.3)), y, 1, 1);
-		Spongebob.fillRect(x-((int)(width*.2)), y+((int)(width*.4)), 1, 1);
-		Spongebob.fillRect(x-((int)(width*.3)), y+((int)(width*.4)), 1, 1);
-		//LLeg.reset();
-		//LLeg.addPoint(xmultiplier, ymultiplier);
-		//LLeg.addPoint();
-		//LLeg.addPoint(xmultiplier, ymultiplier);
-		//LLeg.addPoint();
+		///////////////////Legs/////////////////////////////
+		LLeg.reset();
+		LLeg.addPoint(x-((int)(width*.2)), y);
+		LLeg.addPoint(x-((int)(width*.2)), y+((int)(width*.4)));
+		LLeg.addPoint(x-((int)(width*.3)), y+((int)(width*.4)));
+		LLeg.addPoint(x-((int)(width*.3)), y);
+		RLeg.reset();
+		
+		RLeg.addPoint(x-((int)(width*.7)), y);
+		RLeg.addPoint(x-((int)(width*.7)), y+((int)(width*.4)));
+		RLeg.addPoint(x-((int)(width*.8)), y+((int)(width*.4)));
+		RLeg.addPoint(x-((int)(width*.8)), y);
+		RSock.reset();
+		
+		RSock.addPoint(x-((int)(width*.7)), y+((int)(width*.1)));
+		RSock.addPoint(x-((int)(width*.7)), y+((int)(width*.4)));
+		RSock.addPoint(x-((int)(width*.8)), y+((int)(width*.4)));
+		RSock.addPoint(x-((int)(width*.8)), y+((int)(width*.1)));
+		LSock.reset();
+		
+		LSock.addPoint(x-((int)(width*.2)), y+((int)(width*.1)));
+		LSock.addPoint(x-((int)(width*.2)), y+((int)(width*.4)));
+		LSock.addPoint(x-((int)(width*.3)), y+((int)(width*.4)));
+		LSock.addPoint(x-((int)(width*.3)), y+((int)(width*.1)));
+		LRStripe.reset();
+		
+		LRStripe.addPoint(x-((int)(width*.2)), y+((int)(width*.25)));
+		LRStripe.addPoint(x-((int)(width*.2)), y+((int)(width*.3)));
+		LRStripe.addPoint(x-((int)(width*.3)), y+((int)(width*.3)));
+		LRStripe.addPoint(x-((int)(width*.3)), y+((int)(width*.25)));
+		RRStripe.reset();
+		
+		RRStripe.addPoint(x-((int)(width*.7)), y+((int)(width*.25)));
+		RRStripe.addPoint(x-((int)(width*.7)), y+((int)(width*.3)));
+		RRStripe.addPoint(x-((int)(width*.8)), y+((int)(width*.3)));
+		RRStripe.addPoint(x-((int)(width*.8)), y+((int)(width*.25)));
+		RBStripe.reset();
+		
+		RBStripe.addPoint(x-((int)(width*.7)), y+((int)(width*.15)));
+		RBStripe.addPoint(x-((int)(width*.7)), y+((int)(width*.2)));
+		RBStripe.addPoint(x-((int)(width*.8)), y+((int)(width*.2)));
+		RBStripe.addPoint(x-((int)(width*.8)), y+((int)(width*.15)));
+		LBStripe.reset();
+		
+		LBStripe.addPoint(x-((int)(width*.2)), y+((int)(width*.15)));
+		LBStripe.addPoint(x-((int)(width*.2)), y+((int)(width*.2)));
+		LBStripe.addPoint(x-((int)(width*.3)), y+((int)(width*.2)));
+		LBStripe.addPoint(x-((int)(width*.3)), y+((int)(width*.15)));
+		LShoe.reset();
+		
+		//LShoe.addPoint(x, y);
+		//LShoe.addPoint(x, y);
+		//LShoe.addPoint(x, y);
+		//LShoe.addPoint(x, y);
+		
+		/////////////////////////////////////////////////////
 		Spongebob.setColor(Color.yellow);
 		Spongebob.fillPolygon(LArm);
+		Spongebob.fillPolygon(LLeg);
+		Spongebob.fillPolygon(RLeg);
 		Spongebob.setColor(Color.white);
 		Spongebob.fillPolygon(LShoulder);
 		Spongebob.fillPolygon(RShoulder);
+		Spongebob.fillPolygon(LSock);
+		Spongebob.fillPolygon(RSock);
+		Spongebob.setColor(Color.red);
+		//Spongebob.fillPolygon(Shoe);
+		Spongebob.fillPolygon(LRStripe);
+		Spongebob.fillPolygon(RRStripe);
+		Spongebob.setColor(Color.blue);
+		Spongebob.fillPolygon(LBStripe);
+		Spongebob.fillPolygon(RBStripe);
+		Spongebob.setColor(Color.black);
+		Spongebob.fillPolygon(LShoe);
+		Spongebob.fillPolygon(RShoe);
 	}
 	public void keyReleased(KeyEvent e) {
 		//System.out.println(e.getKeyChar());
