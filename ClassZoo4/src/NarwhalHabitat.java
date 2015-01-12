@@ -13,10 +13,18 @@ public class NarwhalHabitat extends Applet{
 	{
 		//Body
 		g.setColor(new Color(109,141,145));
-		//Head
 		g.fillArc(350,200,175,300,180,-135);
+		//Head
 		//g.setColor(Color.black);
 		g.fillArc(410,229,105,105,45,-155);
+		//Eyes
+		g.setColor(new Color(235,233,223));
+		g.fillOval(500,260,10,30);//Right
+		g.fillOval(485,260,10,30);//Left
+		//Irises
+		g.setColor(new Color(0,0,255));
+		g.fillOval(502,265,6,23);//Right
+		g.fillOval(487,265,6,23);//Left
 		//Horn
 		g.setColor(new Color(235,247,200));
 		Polygon horn = new Polygon();
@@ -27,8 +35,18 @@ public class NarwhalHabitat extends Applet{
 		//Stripes on Horn
 		g.setColor(new Color(252,190,88));
 		g.drawArc(500,244,27,15,180,-190);
-		g.drawArc(510,236,27,15,180,-180);
-		g.drawArc(520,216,27,15,180,-180);
+		g.drawArc(512,236,27,15,180,-180);
+		g.drawArc(522,226,23,10,180,-180);
+		//Smile
+		int y=315;
+		for(int x=462;x>=430;x-=1)
+		{
+			g.setColor(Color.black);
+			g.drawArc(x,270,50,50,y,-135);
+			y-=1;
+		}
+		//Tongue
+		
 		
 	}
 	
