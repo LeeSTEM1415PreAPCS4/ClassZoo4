@@ -6,6 +6,8 @@ public class OceanSponge extends Applet implements KeyListener  {
 	Polygon LArm= new Polygon();
 	Polygon RLeg= new Polygon();
 	Polygon LLeg= new Polygon();
+	Polygon LShoulder=new Polygon();
+	Polygon RShoulder=new Polygon();
 	 Graphics Spongebob;
 	public void init(){
 		
@@ -38,77 +40,42 @@ public class OceanSponge extends Applet implements KeyListener  {
 	 
 	private void drawAnimal(Graphics g,Character key)
 	{
-
-		if(key=='N'){
 		Spongebob=g.create();
-		Spongebob.setColor(Color.yellow);
+		Spongebob.setColor(new Color(155,155,255));
+		Spongebob.fillPolygon(RArm);
+		Spongebob.fillPolygon(LArm);
+		Spongebob.fillPolygon(RLeg);
+		Spongebob.fillPolygon(LLeg);
+		Spongebob.fillPolygon(LShoulder);
+		Spongebob.fillPolygon(RShoulder);
+		Spongebob.fillRect(x-width, y-height, width, height);
+		if(key=='N'){
 		  x=getWidth();
 		  y=getHeight();
 		  width=getWidth()/5;
 		  height=getHeight()/5;
-		Spongebob.fillRect(x-width, y-height, width, height);
-		draw_Inside();
 		}else if(key=='A'||key=='a'){
-		Spongebob.setColor(new Color(155,155,255));
-		Spongebob.fillRect(x-width, y-height, width, height);
-		Spongebob.setColor(Color.yellow);
 		x-=5;
-		Spongebob.fillRect(x-width, y-height, width, height);
-		draw_Inside();
 		}else if(key=='D'||key=='d'){
-			Spongebob.setColor(new Color(155,155,255));
-			Spongebob.fillRect(x-width, y-height, width, height);
-			Spongebob.setColor(Color.yellow);
 			x+=5;
-			Spongebob.fillRect(x-width, y-height, width, height);
-			draw_Inside();
 		}else if(key=='w'||key=='W'){
-			Spongebob.setColor(new Color(155,155,255));
-			Spongebob.fillRect(x-width, y-height, width, height);
-			Spongebob.setColor(Color.yellow);
 			y-=5;
-			Spongebob.fillRect(x-width, y-height, width, height);
-			draw_Inside();
 		}else if(key=='s'||key=='S'){
-			Spongebob.setColor(new Color(155,155,255));
-			Spongebob.fillRect(x-width, y-height, width, height);
-			Spongebob.setColor(Color.yellow);
 			y+=5;
-			Spongebob.fillRect(x-width, y-height, width, height);
-			draw_Inside();
-			
 		}
 		
 		if(x<=0-width){
-			Spongebob.setColor(new Color(155,155,255));
-			Spongebob.fillRect(x-width, y-height, width, height);
 			 x=(int)getWidth()-5;
-			Spongebob.setColor(Color.yellow);
-			Spongebob.fillRect(x-width, y-height, width, height);
-			draw_Inside();
 		}else if(x>=(int)getWidth()+width){
-			Spongebob.setColor(new Color(155,155,255));
-			Spongebob.fillRect(x-width, y-height, width, height);
 			x=0+5;
-			Spongebob.setColor(Color.yellow);
-			Spongebob.fillRect(x-width, y-height, width, height);
-			draw_Inside();
 		}else if(y<=0-height){
-			Spongebob.setColor(new Color(155,155,255));
-			Spongebob.fillRect(x-width, y-height, width, height);
-			 y=(int)getHeight();
-			Spongebob.setColor(Color.yellow);
-			Spongebob.fillRect(x-width, y-height, width, height);
-			draw_Inside();
+			 y=(int)getHeight();;
 		}else if(y>=(int)getHeight()+height){
-			
-			Spongebob.setColor(new Color(155,155,255));
-			Spongebob.fillRect(x-width, y-height, width, height);
 			 y=height;
-			Spongebob.setColor(Color.yellow);
-			Spongebob.fillRect(x-width, y-height, width, height);
-			draw_Inside();
 		}
+		Spongebob.setColor(Color.yellow);
+		Spongebob.fillRect(x-width, y-height, width, height);
+		draw_Inside();
 	}
 	//			Spongebob.fillOval((x-width)+(int)Math.random()*10, (y-height)+(int)Math.random()*10, 10, 10);
 	private void drawHabitat(Graphics g)
@@ -127,12 +94,35 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.setColor(new Color(255,255,255));
 		Spongebob.fillOval((x-width)+width/5, (y-height)+width/5, width/5, height/5);
 		Spongebob.fillOval((x-width)+width/2, (y-height)+width/5, width/5, height/5);
-		RArm.addPoint(x-width+(width*2), y-height+(height/5));
-		//RArm.addPoint(x, y);
-		RArm.addPoint(x+(width/5), y+(height/5));
-		RArm.addPoint(x-width-(width/5), y-height+(height/5));
-		Spongebob.setColor(Color.red);
-		Spongebob.fillPolygon(RArm);
+		Spongebob.setColor(Color.blue);
+		Spongebob.fillOval((x-width)+width/5+(width/10), (y-height)+width/5+(height/10), width/10, height/10);
+		Spongebob.fillOval((x-width)+width/2+(width/10), (y-height)+width/5+(height/10), width/10, height/10);
+		//Spongebob.fillOval(x-width, y-height+(height/5), 10, 10);
+		LArm.reset();
+		LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2)+(width/10));
+		LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25)+(height/10));
+		LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25));
+		LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2));
+		LShoulder.reset();
+		int xmultiplier = width/40;
+		int ymultiplier = height/40;
+		LShoulder.addPoint(x-width, y-height+(18*ymultiplier));
+		LShoulder.addPoint(x-width-(xmultiplier*5), y-height+(18*ymultiplier));
+		LShoulder.addPoint(x-width-(xmultiplier*5), y-height+(12*ymultiplier));
+		LShoulder.addPoint(x-width, y-height+(12*ymultiplier));
+		////////////////////////////////////////////////////
+		double YLocoSh=0.45;
+		RShoulder.reset();
+		RShoulder.addPoint(x, y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x+(int)(width*.15), y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x+(int)(width*.15),y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x, y-(int)(height*(YLocoSh-0.1)));
+
+		Spongebob.setColor(Color.yellow);
+		Spongebob.fillPolygon(LArm);
+		Spongebob.setColor(Color.white);
+		Spongebob.fillPolygon(LShoulder);
+		Spongebob.fillPolygon(RShoulder);
 	}
 	public void keyReleased(KeyEvent e) {
 		//System.out.println(e.getKeyChar());
