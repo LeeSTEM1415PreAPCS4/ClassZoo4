@@ -8,4 +8,5 @@ public class ty extends Applet{
 	{
 		 //Therizinosaurus is the name of dino
 }
+	
 }
