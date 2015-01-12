@@ -6,6 +6,8 @@ public class OceanSponge extends Applet implements KeyListener  {
 	Polygon LArm= new Polygon();
 	Polygon RLeg= new Polygon();
 	Polygon LLeg= new Polygon();
+	Polygon LShoulder=new Polygon();
+	Polygon RShoulder=new Polygon();
 	 Graphics Spongebob;
 	public void init(){
 		
@@ -44,6 +46,8 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.fillPolygon(LArm);
 		Spongebob.fillPolygon(RLeg);
 		Spongebob.fillPolygon(LLeg);
+		Spongebob.fillPolygon(LShoulder);
+		Spongebob.fillPolygon(RShoulder);
 		Spongebob.fillRect(x-width, y-height, width, height);
 		if(key=='N'){
 		  x=getWidth();
@@ -98,19 +102,27 @@ public class OceanSponge extends Applet implements KeyListener  {
 		LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2)+(width/10));
 		LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25)+(height/10));
 		LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25));
-		LArm.addPoint(x-(int)(width*1.5), y-(height/2));
-		Polygon Shoulder=new Polygon();
-		Shoulder.reset();
+		LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2));
+		LShoulder.reset();
 		int xmultiplier = width/40;
 		int ymultiplier = height/40;
-		Shoulder.addPoint(x-width, y-height+18*ymultiplier);
-		Shoulder.addPoint(x-width-xmultiplier*5, y-height+18*ymultiplier);
-		Shoulder.addPoint(x-width-xmultiplier*5, y-height+12*ymultiplier);
-		Shoulder.addPoint(x-width, y-height+12*ymultiplier);
+		LShoulder.addPoint(x-width, y-height+(18*ymultiplier));
+		LShoulder.addPoint(x-width-(xmultiplier*5), y-height+(18*ymultiplier));
+		LShoulder.addPoint(x-width-(xmultiplier*5), y-height+(12*ymultiplier));
+		LShoulder.addPoint(x-width, y-height+(12*ymultiplier));
+		////////////////////////////////////////////////////
+		double YLocoSh=0.45;
+		RShoulder.reset();
+		RShoulder.addPoint(x, y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x+(int)(width*.15), y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x+(int)(width*.15),y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x, y-(int)(height*(YLocoSh-0.1)));
+
 		Spongebob.setColor(Color.yellow);
 		Spongebob.fillPolygon(LArm);
 		Spongebob.setColor(Color.white);
-		Spongebob.fillPolygon(Shoulder);
+		Spongebob.fillPolygon(LShoulder);
+		Spongebob.fillPolygon(RShoulder);
 	}
 	public void keyReleased(KeyEvent e) {
 		//System.out.println(e.getKeyChar());
