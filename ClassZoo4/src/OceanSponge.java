@@ -47,6 +47,7 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.fillPolygon(RLeg);
 		Spongebob.fillPolygon(LLeg);
 		Spongebob.fillPolygon(LShoulder);
+		Spongebob.fillPolygon(RShoulder);
 		Spongebob.fillRect(x-width, y-height, width, height);
 		if(key=='N'){
 		  x=getWidth();
@@ -110,15 +111,18 @@ public class OceanSponge extends Applet implements KeyListener  {
 		LShoulder.addPoint(x-width-(xmultiplier*5), y-height+(12*ymultiplier));
 		LShoulder.addPoint(x-width, y-height+(12*ymultiplier));
 		////////////////////////////////////////////////////
-		Spongebob.fillRect(x, y-(int)(height*.3), 1, 1);
-		Spongebob.fillRect(x, y-(int)(height*.4), 1, 1);
-		//RShoulder.addPoint(x, y-(int)(Math.ceil(height*.8));
-		//RShoulder.addPoint(x,y);
-		//RShoulder.addPoint();
+		double YLocoSh=0.45;
+		RShoulder.reset();
+		RShoulder.addPoint(x, y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x+(int)(width*.15), y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x+(int)(width*.15),y-(int)(height*YLocoSh));
+		RShoulder.addPoint(x, y-(int)(height*(YLocoSh-0.1)));
+
 		Spongebob.setColor(Color.yellow);
 		Spongebob.fillPolygon(LArm);
 		Spongebob.setColor(Color.white);
 		Spongebob.fillPolygon(LShoulder);
+		Spongebob.fillPolygon(RShoulder);
 	}
 	public void keyReleased(KeyEvent e) {
 		//System.out.println(e.getKeyChar());
