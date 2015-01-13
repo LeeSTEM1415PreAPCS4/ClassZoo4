@@ -1,13 +1,24 @@
 
 
 import java.applet.Applet;
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Polygon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTextPane;
 
 public class Albatross extends Applet implements Runnable, MouseListener{
 	
@@ -21,13 +32,29 @@ public class Albatross extends Applet implements Runnable, MouseListener{
      
     boolean flying = false;
     
+    Polygon Flying = new Polygon();
+    Polygon NotFlying = new Polygon();
+    
     Point[] locationsToLand = new Point[]{
     	new Point(0, 0),
     	new Point(70, 70),
     	new Point(140, 140),
     };
-     
+    
+    public void setUpPolygons(){
+    	Flying.addPoint(0, 0);
+    	Flying.addPoint(20, 0);
+    	Flying.addPoint(20, 20);
+    	Flying.addPoint(0, 20);
+    	
+    	NotFlying.addPoint(0, 0);
+    	NotFlying.addPoint(20, 0);
+    	NotFlying.addPoint(20, 20);
+    	NotFlying.addPoint(0, 20);
+    }
+    
     public void init() { 
+    	setUpPolygons();
     	dim = getSize(); 
         setBackground(Color.white); 
         offscreen = createImage(dim.width,dim.height); 
@@ -38,29 +65,39 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 
 	public void paint(Graphics g)
 	{
-		draw();
+		try{
+			draw();
+		}catch(NullPointerException e){}
 		g.drawImage(offscreen,0,0,this); 
 	}
 	
 	public void draw(){
-		bufferGraphics.clearRect(0, 0, 1000, 1000);
-		bufferGraphics.fillRect(0, 0, 30, 30);
+		bufferGraphics.clearRect(0, 0, getSize().width, getSize().height);
 		drawHabitat(bufferGraphics);
 		drawAnimal(bufferGraphics);
+		for(int i = 0; i < Math.max(getSize().width, getSize().height); i+= 15){
+			bufferGraphics.setColor(Color.gray);
+			bufferGraphics.drawLine(i, 0, i, getSize().height);
+			bufferGraphics.drawLine(0, i, getSize().width, i);
+		}
 	}
 	
 	private void drawAnimal(Graphics g){
 		g.setColor(Color.white);
+		Polygon draw = new Polygon();
 		if(flying){
-			g.fillOval(animx, animy, 20, 10);
-			g.setColor(Color.black);
-			g.drawOval(animx, animy, 20, 10);
+			for(int i = 0; i < Flying.npoints; i++){
+				draw.addPoint(animx + Flying.xpoints[i], animx + Flying.ypoints[i]);
+			}
 		}
 		else {
-			g.fillOval(animx, animy, 10, 20);
-			g.setColor(Color.black);
-			g.drawOval(animx, animy, 10, 20);
+			for(int i = 0; i < NotFlying.npoints; i++){
+				draw.addPoint(animx + NotFlying.xpoints[i], animx + NotFlying.ypoints[i]);
+			}
 		}
+		g.fillPolygon(draw);
+		g.setColor(Color.black);
+		g.drawPolygon(draw);
 	}
 	
 	private void drawHabitat(Graphics g)
@@ -127,7 +164,6 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 				distance = getDistance(new Point(e.getX(), e.getY()), p);
 				usePoint = p;
 			}
-			System.out.println(distance);
 		}
 		desiredx = usePoint.x;
 		desiredy = usePoint.y;
@@ -148,5 +184,72 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {}
-
+	
+	private static final Cat CAT = new Cat();
+	private static final koala KOALA = new koala();
+	private static final Albatross ALBATROSS = new Albatross();
+	private static int pos = 2;
+	private static final int exhibitAmnt = 3;
+	private static JPanel c;
+	private static JTextPane pane;
+	
+	public static void main(String[] args){
+		JFrame frame = new JFrame();
+		JButton left = new JButton("<");
+		JButton right = new JButton(">");
+		JSplitPane jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		frame.setLayout(new GridLayout(1, 3));
+		left.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switchs(true);
+			}
+		});
+		right.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switchs(false);
+			}
+		});
+		frame.add(left);
+		CAT.setPreferredSize(new Dimension(200, 200));
+		KOALA.setPreferredSize(new Dimension(200, 200));
+		ALBATROSS.setPreferredSize(new Dimension(200, 200));
+		c = new JPanel();
+		c.setPreferredSize(new Dimension(200, 200));
+		pane = new JTextPane();
+		pane.setEditable(false);
+		switch(pos){
+		case 0: c.add(CAT);pane.setText("Cat");break;
+		case 1: c.add(KOALA);pane.setText("Koala");break;
+		case 2: c.add(ALBATROSS);pane.setText("Albatross");break;
+		}
+		jsp.add(pane);
+		jsp.add(c);
+		frame.add(jsp);
+		frame.add(right);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(3);
+		frame.setVisible(true);
+		CAT.init();
+		CAT.start();
+		KOALA.init();
+		KOALA.start();
+		ALBATROSS.init();
+		ALBATROSS.start();
+	}
+	
+	private static void switchs(boolean left){
+		pos += (left ? -1 : 1);
+		if(pos < 0) pos = exhibitAmnt-1;
+		if(pos >= exhibitAmnt) pos = 0;
+		c.removeAll();
+		switch(pos){
+		case 0: c.add(CAT);pane.setText("Cat");break;
+		case 1: c.add(KOALA);pane.setText("Koala");break;
+		case 2: c.add(ALBATROSS);pane.setText("Albatross");break;
+		}
+		c.repaint();
+	}
 }
