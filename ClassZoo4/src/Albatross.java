@@ -188,10 +188,12 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 	private static final Cat CAT = new Cat();
 	private static final koala KOALA = new koala();
 	private static final Albatross ALBATROSS = new Albatross();
-	private static int pos = 2;
-	private static final int exhibitAmnt = 3;
+	private static final NarwhalHabitat NARWHAL = new NarwhalHabitat();
+	private static int pos = 1;
+	private static final int exhibitAmnt = 4;
 	private static JPanel c;
 	private static JTextPane pane;
+	private static Dimension test = new Dimension();
 	
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
@@ -215,15 +217,12 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		CAT.setPreferredSize(new Dimension(200, 200));
 		KOALA.setPreferredSize(new Dimension(200, 200));
 		ALBATROSS.setPreferredSize(new Dimension(200, 200));
+		NARWHAL.setPreferredSize(new Dimension(200, 200));
 		c = new JPanel();
 		c.setPreferredSize(new Dimension(200, 200));
 		pane = new JTextPane();
 		pane.setEditable(false);
-		switch(pos){
-		case 0: c.add(CAT);pane.setText("Cat");break;
-		case 1: c.add(KOALA);pane.setText("Koala");break;
-		case 2: c.add(ALBATROSS);pane.setText("Albatross");break;
-		}
+		switchs(false);
 		jsp.add(pane);
 		jsp.add(c);
 		frame.add(jsp);
@@ -238,6 +237,8 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		KOALA.start();
 		ALBATROSS.init();
 		ALBATROSS.start();
+		NARWHAL.init();
+		NARWHAL.start();
 	}
 	
 	private static void switchs(boolean left){
@@ -249,6 +250,7 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		case 0: c.add(CAT);pane.setText("Cat");break;
 		case 1: c.add(KOALA);pane.setText("Koala");break;
 		case 2: c.add(ALBATROSS);pane.setText("Albatross");break;
+		case 3: c.add(NARWHAL);pane.setText("Narwhal");break;
 		}
 		c.repaint();
 	}
