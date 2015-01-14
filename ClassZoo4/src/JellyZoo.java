@@ -10,7 +10,8 @@ public class JellyZoo extends Applet{
 		drawAnimal(g);
 		drawHabitat(g);
 		
-		doTheThing(g);
+		
+		
 		
 		
 	}
@@ -22,7 +23,7 @@ public class JellyZoo extends Applet{
 		Color noodle = new Color (173,58,250);
 		g.setColor(noodle);
 		//making sure people know that i am the best jellyfish of all
-		g.drawString("nyoom nyoom im a jelly fish imma sting u because i am king, the king jellyfish, the best of all jelly", 150, 450);
+		g.drawString("nyoom nyoom im a jelly fish imma sting u because i am king, the king jellyfish, the king of all jelly fish", 150, 450);
 		//legs and or tentacle things those things are weird
 		g.drawRect(x1+340, y1+30,  100, 1);
 		g.drawRect(x1+440, y1+32,  100, 1);
@@ -36,7 +37,7 @@ public class JellyZoo extends Applet{
 		g.drawRect(x1+280, y1+114, 100, 1);
 		
 		//body
-		Color base = new Color (217, 80, 254);
+		Color base = new Color (17, 118, 130);
 		Color highlight = new Color (249, 143, 251);
 	   	g.setColor(base);
 	    g.fillArc(505, 305, 520, 120, 65, 180);
@@ -62,20 +63,21 @@ public class JellyZoo extends Applet{
 	    
 	    
 }
-	private void run(Graphics g, int x1)
+	private void flop(Graphics g, int x1 )
 	{
 		while (true) {
+			x1--;
+			
+			
 			//move legs left then right
 		       repaint();
-		      try { Thread.sleep(400); }
+		      try { Thread.sleep(400);}
 		       catch (InterruptedException e) { }
+		    x1++;
 		     }
 	}
 	
-	public void doTheThing(Graphics g)
-	{
-		
-	}
+	
 	
 	private void drawHabitat(Graphics g)
 	{
@@ -95,13 +97,19 @@ public class JellyZoo extends Applet{
 			
 	//Jelly Jar
 			g.fillRoundRect(650, 600, 100, 150, 20, 15);
+			//label
 			g.setColor(Color.RED);
 			g.fillRect(650,625,100,50);
 			g.setColor(Color.WHITE);
 			g.drawString("Supreme Jelly", 660, 655);
-			Color Jelly = new Color (132, 7, 4);
+			//jelly
+			Color Jelly = new Color (160, 112, 113);
 			g.setColor(Jelly);
-			g.fillRect(651,680,99,65);
+			g.fillRect(651,679,98,65);
+			//glass reflection
+			g.setColor(Color.WHITE);
+			g.fillArc(660, 660, 150, 100, 200, 20);
+			
 			
 			
 	
