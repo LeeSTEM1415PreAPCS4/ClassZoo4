@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.applet.*;
+import java.util.Random;
 
 public class NarwhalHabitat extends Applet{
 	
@@ -63,7 +64,9 @@ public class NarwhalHabitat extends Applet{
 		g.drawRect(10,10,800,700);
 		//Ice Hole
 		g.fillOval(350,300,100,100);
-		//Left Igloo
+		
+		
+		/*//Left Igloo
 		g.drawArc(20,20,100,150,0,180);//Main
 		g.drawLine(20,95,120,95);//Bottom
 		//Vertical Lines
@@ -78,7 +81,9 @@ public class NarwhalHabitat extends Applet{
 		g.drawLine(26,59,114,59);//Fourth
 		g.drawLine(23,71,118,71);//Fifth
 		g.drawLine(22,83,119,83);//Sixth
-		
+		//Opening
+		g.fillArc(60,71,20,48,0,180);
+		*/
 		
 		//Right Igloo
 		g.drawArc(320,20,100,150,0,180);//Main
@@ -95,5 +100,30 @@ public class NarwhalHabitat extends Applet{
 		g.drawLine(326,59,414,59);//Fourth
 		g.drawLine(323,71,418,71);//Fifth
 		g.drawLine(322,83,419,83);//Sixth
+		//Opening
+		g.fillArc(360,71,20,48,0,180);
+		
+		
+		
+		//Random Igloos(Test)
+		//Setup
+		Random rand=new Random();
+		int x=rand.nextInt(340)+10;
+		int y=rand.nextInt(590)+10;
+		
+		//Start of Igloo
+		g.drawArc(x,y,100,150,0,180);//Arc
+		g.drawLine(x,y+75,x+100,y+75);//Bottom
+		//Vertical Lines
+		g.drawLine(x+20,y+75,x+20,y+15);//Left
+		g.drawLine(x+40,y+75,x+40,y+3); //Second
+		g.drawLine(x+60,y+75,x+60,y+3); //Third
+		g.drawLine(x+80,y+75,x+80,y+15);//Right
+		//Horizontal Lines
+		g.drawLine(x+40,y+3,x+60,y+3);
+		g.drawLine(x+20,y+15,x+80,y+15);
+		
+		
+		
 	}
 }
