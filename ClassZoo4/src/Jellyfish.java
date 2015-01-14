@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Jellyfish extends Applet implements Runnable{
 	private boolean eyesopen;
+	private boolean randomColor;
 	Thread runner;
 	
 	public void paint(Graphics g)
@@ -22,6 +23,7 @@ public class Jellyfish extends Applet implements Runnable{
 			g.fillRect(0, 0, 1000, 1000);
 
 			Random rndInt = new Random(6277);
+			Random rdInt = new Random();
 
 			for (int z = 0; z<=25; z++)
 				{
@@ -31,9 +33,18 @@ public class Jellyfish extends Applet implements Runnable{
 					g.drawOval(ex, why, 50, 50);
 					g.setColor(Color.white);
 					g.fillOval(ex, why, 50, 50);
+					
+					
 				}
-			
-		
+			while (randomColor)
+			{
+			Color random = new Color(rdInt.nextInt(243), rdInt.nextInt(243), rdInt.nextInt(243));
+			g.setFont(new Font("Impact", Font.TRUETYPE_FONT, 60)); 
+			g.setColor(random);
+			g.drawString("I'm", 100, 75);
+			g.drawString("watching", 30, 175);
+			g.drawString("you", 100, 275);
+			}
 }
 		}
 	private void drawAnimal(Graphics g)
@@ -70,7 +81,7 @@ public class Jellyfish extends Applet implements Runnable{
 			g.setColor(Color.black);
 			g.fillOval(460, 275, 25, 25);
 			g.fillOval(510, 275, 25, 25);
-			//for (long delay = 99999; delay < 10000000; delay++);
+			
 			}
 			else
 			{
@@ -78,7 +89,6 @@ public class Jellyfish extends Applet implements Runnable{
 			g.setColor(Color.magenta);
 			g.fillOval(460, 275, 25, 25);
 			g.fillOval(510, 275, 25, 25);
-			g.setColor(Color.black);
 			}
 		
 		
@@ -88,7 +98,8 @@ public class Jellyfish extends Applet implements Runnable{
 		     while (true){
 		    if (eyesopen==true)
 		    {
-		       repaint();
+		     
+		    	repaint();
 		      try { Thread.sleep(100); }
 		       catch (InterruptedException e) { }
 		      
@@ -97,6 +108,7 @@ public class Jellyfish extends Applet implements Runnable{
 		     
 		     else{
 		       repaint();
+		      
 		      try { Thread.sleep(5000); }
 		       catch (InterruptedException e) { }
 		      
@@ -111,7 +123,7 @@ public class Jellyfish extends Applet implements Runnable{
 		     }
 		   }
 
-		
+	
 
 	
 }
