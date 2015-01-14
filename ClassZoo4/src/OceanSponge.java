@@ -16,6 +16,14 @@ public class OceanSponge extends Applet implements KeyListener  {
 	Polygon RBStripe = new Polygon();
 	Polygon RShoe = new Polygon();
 	Polygon LShoe = new Polygon();
+	Polygon Pants = new Polygon();
+	Polygon Shirt = new Polygon();
+	Polygon LPants = new Polygon();
+	Polygon RPants = new Polygon();
+	Polygon Tie = new Polygon();
+	Polygon Belt1 = new Polygon();
+	Polygon Belt2 = new Polygon();
+	Polygon Belt3 = new Polygon();
 	 Graphics Spongebob;
 	 String Dir;
 	public void init(){
@@ -57,6 +65,8 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.fillPolygon(RShoulder);
 		Spongebob.fillPolygon(LShoe);
 		Spongebob.fillPolygon(RShoe);
+		Spongebob.fillPolygon(LPants);
+		Spongebob.fillPolygon(RPants);
 		Spongebob.fillRect(x-width, y-height, width, height);
 		if(key=='N'){
 		  width=getWidth()/5;
@@ -141,11 +151,11 @@ public class OceanSponge extends Applet implements KeyListener  {
 			Spongebob.drawOval((x-width)+(int)(width*.15)+(width/10), (y-height)+(int)(width*0.25), width/10, height/10);
 		}
 		//Spongebob.fillOval(x-width, y-height+(height/5), 10, 10);
-		LArm.reset();
-		LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2)+(width/10));
-		LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25)+(height/10));
-		LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25));
-		LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2));
+		//LArm.reset();
+		//LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2)+(width/10));
+		//LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25)+(height/10));
+		//LArm.addPoint(x-(int)(width/1.25), y-(int)(height/1.25));
+		//LArm.addPoint(x-(int)(width*1.5), y-(int)(height/2));
 		LShoulder.reset();
 		double YRocoSh=0.45;
 		LShoulder.addPoint(x-width, y-(int)(height*YRocoSh));
@@ -232,6 +242,39 @@ public class OceanSponge extends Applet implements KeyListener  {
 			LShoe.addPoint(x-((int)(width*.85)), y+((int)(width*.35)));
 			LShoe.addPoint(x-((int)(width*.85)), y+((int)(width*.45)));
 		}
+		Shirt.reset();
+		Shirt.addPoint(x, y);
+		Shirt.addPoint(x-width, y);
+		Shirt.addPoint(x-width, y-(int)(height*.25));
+		Shirt.addPoint(x,y-(int)(height*.25));
+		Pants.reset();
+		Pants.addPoint(x, y);
+		Pants.addPoint(x-width, y);
+		Pants.addPoint(x-width, y-(int)(height*.15));
+		Pants.addPoint(x,y-(int)(height*.15));
+		
+		LPants.reset();
+		LPants.addPoint(x-((int)(width*.15)), y);
+		LPants.addPoint(x-((int)(width*.1)), y+((int)(width*.1)));
+		LPants.addPoint(x-((int)(width*.4)), y+((int)(width*.1)));
+		LPants.addPoint(x-((int)(width*.35)), y);
+		RPants.reset();
+		
+		RPants.addPoint(x-((int)(width*.65)), y);
+		RPants.addPoint(x-((int)(width*.6)), y+((int)(width*.1)));
+		RPants.addPoint(x-((int)(width*.9)), y+((int)(width*.1)));
+		RPants.addPoint(x-((int)(width*.85)), y);
+		Tie.reset();
+		
+		Tie.addPoint(x-(int)(width*.45), y-(int)(height*.25));
+		Tie.addPoint(x-(int)(width*.55), y-(int)(height*.25));
+		Tie.addPoint(x-(int)(width*.45), y-(int)(height*.1));
+		Tie.addPoint(x-(int)(width*.5), y-(int)(height*.05));
+		Tie.addPoint(x-(int)(width*.55), y-(int)(height*.1));
+		Belt1.reset();
+		Belt2.reset();
+		Belt3.reset();
+		
 		/////////////////////////////////////////////////////
 		Spongebob.setColor(Color.yellow);
 		Spongebob.fillPolygon(LArm);
@@ -242,16 +285,22 @@ public class OceanSponge extends Applet implements KeyListener  {
 		Spongebob.fillPolygon(RShoulder);
 		Spongebob.fillPolygon(LSock);
 		Spongebob.fillPolygon(RSock);
-		Spongebob.setColor(Color.red);
-		Spongebob.fillPolygon(LShoe);
-		Spongebob.fillPolygon(LRStripe);
-		Spongebob.fillPolygon(RRStripe);
+		Spongebob.fillPolygon(Shirt);
 		Spongebob.setColor(Color.blue);
 		Spongebob.fillPolygon(LBStripe);
 		Spongebob.fillPolygon(RBStripe);
 		Spongebob.setColor(Color.black);
 		Spongebob.fillPolygon(LShoe);
 		Spongebob.fillPolygon(RShoe);
+		Spongebob.setColor(new Color(102,51,0));
+		Spongebob.fillPolygon(Pants);
+		Spongebob.fillPolygon(LPants);
+		Spongebob.fillPolygon(RPants);
+		Spongebob.setColor(Color.red);
+		Spongebob.fillPolygon(LRStripe);
+		Spongebob.fillPolygon(Tie);
+		Spongebob.fillPolygon(RRStripe);
+		
 	}
 	public void keyReleased(KeyEvent e) {
 		//System.out.println(e.getKeyChar());
