@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.applet.*;
-import java.util.Date;
 import java.util.Random;
 
 public class Jellyfish extends Applet implements Runnable{
@@ -23,7 +22,7 @@ public class Jellyfish extends Applet implements Runnable{
 			g.fillRect(0, 0, 1000, 1000);
 
 			Random rndInt = new Random(6277);
-			Random rdInt = new Random();
+			
 
 			for (int z = 0; z<=25; z++)
 				{
@@ -36,15 +35,10 @@ public class Jellyfish extends Applet implements Runnable{
 					
 					
 				}
-			while (randomColor)
-			{
-			Color random = new Color(rdInt.nextInt(243), rdInt.nextInt(243), rdInt.nextInt(243));
-			g.setFont(new Font("Impact", Font.TRUETYPE_FONT, 60)); 
-			g.setColor(random);
-			g.drawString("I'm", 100, 75);
-			g.drawString("watching", 30, 175);
-			g.drawString("you", 100, 275);
-			}
+			
+			
+			
+			
 }
 		}
 	private void drawAnimal(Graphics g)
@@ -82,6 +76,14 @@ public class Jellyfish extends Applet implements Runnable{
 			g.fillOval(460, 275, 25, 25);
 			g.fillOval(510, 275, 25, 25);
 			
+			//"I'm watching you"
+			Random rdInt = new Random();
+			Color random = new Color(rdInt.nextInt(243), rdInt.nextInt(243), rdInt.nextInt(243));
+			g.setFont(new Font("Impact", Font.TRUETYPE_FONT, 60)); 
+			g.setColor(random);
+			g.drawString("I'm", 100, 75);
+			g.drawString("watching", 30, 175);
+			g.drawString("you", 100, 275);
 			}
 			else
 			{
@@ -122,7 +124,6 @@ public class Jellyfish extends Applet implements Runnable{
 		       runner.start();
 		     }
 		   }
-
 	
 
 	
