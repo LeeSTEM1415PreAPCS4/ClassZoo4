@@ -1,7 +1,4 @@
-
-
 import java.applet.Applet;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,12 +6,9 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Polygon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -193,14 +187,17 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 	private static final int exhibitAmnt = 4;
 	private static JPanel c;
 	private static JTextPane pane;
+	@SuppressWarnings("unused")
 	private static Dimension test = new Dimension();
 	
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
+		/*
 		JButton left = new JButton("<");
-		JButton right = new JButton(">");
+		JButton right = new JButton(">");//*/
 		JSplitPane jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		frame.setLayout(new GridLayout(1, 3));
+		/*
 		left.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -212,8 +209,8 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 			public void actionPerformed(ActionEvent e) {
 				switchs(false);
 			}
-		});
-		frame.add(left);
+		});//*/
+		//frame.add(left);
 		CAT.setPreferredSize(new Dimension(200, 200));
 		KOALA.setPreferredSize(new Dimension(200, 200));
 		ALBATROSS.setPreferredSize(new Dimension(200, 200));
@@ -226,7 +223,7 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		jsp.add(pane);
 		jsp.add(c);
 		frame.add(jsp);
-		frame.add(right);
+		//frame.add(right);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(3);
