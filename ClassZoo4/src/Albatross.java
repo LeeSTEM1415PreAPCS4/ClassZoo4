@@ -1,7 +1,4 @@
-
-
 import java.applet.Applet;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,12 +6,9 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Polygon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -188,17 +182,22 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 	private static final Cat CAT = new Cat();
 	private static final koala KOALA = new koala();
 	private static final Albatross ALBATROSS = new Albatross();
-	private static int pos = 2;
-	private static final int exhibitAmnt = 3;
+	private static final NarwhalHabitat NARWHAL = new NarwhalHabitat();
+	private static int pos = 1;
+	private static final int exhibitAmnt = 4;
 	private static JPanel c;
 	private static JTextPane pane;
+	@SuppressWarnings("unused")
+	private static Dimension test = new Dimension();
 	
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
+		/*
 		JButton left = new JButton("<");
-		JButton right = new JButton(">");
+		JButton right = new JButton(">");//*/
 		JSplitPane jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		frame.setLayout(new GridLayout(1, 3));
+		/*
 		left.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -210,24 +209,21 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 			public void actionPerformed(ActionEvent e) {
 				switchs(false);
 			}
-		});
-		frame.add(left);
+		});//*/
+		//frame.add(left);
 		CAT.setPreferredSize(new Dimension(200, 200));
 		KOALA.setPreferredSize(new Dimension(200, 200));
 		ALBATROSS.setPreferredSize(new Dimension(200, 200));
+		NARWHAL.setPreferredSize(new Dimension(200, 200));
 		c = new JPanel();
 		c.setPreferredSize(new Dimension(200, 200));
 		pane = new JTextPane();
 		pane.setEditable(false);
-		switch(pos){
-		case 0: c.add(CAT);pane.setText("Cat");break;
-		case 1: c.add(KOALA);pane.setText("Koala");break;
-		case 2: c.add(ALBATROSS);pane.setText("Albatross");break;
-		}
+		switchs(false);
 		jsp.add(pane);
 		jsp.add(c);
 		frame.add(jsp);
-		frame.add(right);
+		//frame.add(right);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(3);
@@ -238,6 +234,8 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		KOALA.start();
 		ALBATROSS.init();
 		ALBATROSS.start();
+		NARWHAL.init();
+		NARWHAL.start();
 	}
 	
 	private static void switchs(boolean left){
@@ -249,6 +247,7 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		case 0: c.add(CAT);pane.setText("Cat");break;
 		case 1: c.add(KOALA);pane.setText("Koala");break;
 		case 2: c.add(ALBATROSS);pane.setText("Albatross");break;
+		case 3: c.add(NARWHAL);pane.setText("Narwhal");break;
 		}
 		c.repaint();
 	}
