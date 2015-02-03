@@ -1,5 +1,4 @@
 //Emerson Shands
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -139,6 +138,11 @@ class DrawPanel extends JPanel {
 	
 	
 	//trees
+	g2d.setColor(new Color(131,92,59));
+	g2d.fillRect(40, 0, 200, 1000);
+	g2d.setColor(new Color(112,69,46));
+    
+
     }
 
     @Override
@@ -176,3 +180,4 @@ public class kusa extends JFrame {
         });
     }
 }
+	
