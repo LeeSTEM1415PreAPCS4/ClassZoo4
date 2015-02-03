@@ -28,9 +28,8 @@ public class penguin extends Applet {
 
 	g.setColor(Color.orange);
 	
-	g.drawLine (140, 110, 160, 110);
-    g.drawLine (140, 110, 150, 140);
-    g.drawLine (150, 140, 160, 110);
+	 g.fillArc(125, 90, 50, 50, 190, 160);
+
 
     g.fillOval(90, 210, 60, 20);
     g.fillOval(150, 210, 60, 20);
