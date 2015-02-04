@@ -15,7 +15,7 @@ import javax.swing.SwingUtilities;
 
 class DrawPanelbear extends JPanel {
 
-    private void doDrawing(Graphics g) {
+    private void Bear(Graphics g) {
         
         Graphics2D g2d = (Graphics2D) g;
        
@@ -149,7 +149,7 @@ class DrawPanelbear extends JPanel {
     public void paintComponent(Graphics g) {
         
         super.paintComponent(g);
-        doDrawing(g);
+        Bear(g);
     }
 }
 
