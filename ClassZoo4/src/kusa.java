@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-class DrawPanel extends JPanel {
+class DrawPanelbear extends JPanel {
 
     private void doDrawing(Graphics g) {
         
