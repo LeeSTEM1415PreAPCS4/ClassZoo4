@@ -6,51 +6,31 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class OceanSponge extends JFrame implements KeyListener {
-	
-	public OceanSponge(){
-		init();
+
+	public OceanSponge() {
+		initUI();
+		setTitle("Hio");
 		setVisible(true);
 	}
-	
-	Pain pane = new Pain();
-	Polygon RArm = new Polygon();
-	Polygon LArm = new Polygon();
-	Polygon RLeg = new Polygon();
-	Polygon LLeg = new Polygon();
-	Polygon LShoulder = new Polygon();
-	Polygon RShoulder = new Polygon();
-	Polygon LSock = new Polygon();
-	Polygon RSock = new Polygon();
-	Polygon LRStripe = new Polygon();
-	Polygon RRStripe = new Polygon();
-	Polygon LBStripe = new Polygon();
-	Polygon RBStripe = new Polygon();
-	Polygon RShoe = new Polygon();
-	Polygon LShoe = new Polygon();
-	Polygon Pants = new Polygon();
-	Polygon Shirt = new Polygon();
-	Polygon LPants = new Polygon();
-	Polygon RPants = new Polygon();
-	Polygon Tie = new Polygon();
-	Polygon Belt1 = new Polygon();
-	Polygon Belt2 = new Polygon();
-	Polygon Belt3 = new Polygon();
-	String Dir;
 
-	public void init() {
+	Pain pane = new Pain();
+
+	public void initUI() {
 		addKeyListener(this);
 		add(pane);
 		pack();
 	}
 
+	@Override
 	public void keyPressed(KeyEvent arg0) {
 		Character key = arg0.getKeyChar();
 		if (key == 'A' || key == 'a' || key == 'd' || key == 'D' || key == 'W'
 				|| key == 'w' || key == 's' || key == 'S') {
-			// System.out.println(key);
+			System.out.println((arg0.getKeyCode()) + "Is the keycode");
 			pane.drawAnimal(key);
-		}
 
+		}
+		System.out.println(arg0.getKeyCode());
 	}
 
 	@SuppressWarnings("serial")
@@ -60,20 +40,42 @@ public class OceanSponge extends JFrame implements KeyListener {
 		int y = 0;
 		int width = 0;
 		int height = 0;
+		Polygon RArm = new Polygon();
+		Polygon LArm = new Polygon();
+		Polygon RLeg = new Polygon();
+		Polygon LLeg = new Polygon();
+		Polygon LShoulder = new Polygon();
+		Polygon RShoulder = new Polygon();
+		Polygon LSock = new Polygon();
+		Polygon RSock = new Polygon();
+		Polygon LRStripe = new Polygon();
+		Polygon RRStripe = new Polygon();
+		Polygon LBStripe = new Polygon();
+		Polygon RBStripe = new Polygon();
+		Polygon RShoe = new Polygon();
+		Polygon LShoe = new Polygon();
+		Polygon Pants = new Polygon();
+		Polygon Shirt = new Polygon();
+		Polygon LPants = new Polygon();
+		Polygon RPants = new Polygon();
+		Polygon Tie = new Polygon();
+		Polygon Belt1 = new Polygon();
+		Polygon Belt2 = new Polygon();
+		Polygon Belt3 = new Polygon();
+		String Dir;
 
 		@Override
 		public void paintComponent(Graphics g) {
 			Spongebob = (Graphics2D) g;
-			System.out.print("HI I HAVE BEEN PAINTED");
-			if(Spongebob != null){
-			drawHabitat(g);
-			drawAnimal('N');
-			}
+			System.out.println("Paint drawn");
+				drawHabitat(g);
+				drawAnimal('N');
 			getWidth();
 			getHeight();
 		}
 
-		private void drawAnimal(Character key) {
+		public void drawAnimal(char key) {
+			System.out.println("Animal drawn");
 			Spongebob.setColor(new Color(155, 155, 255));
 			Spongebob.fillPolygon(RArm);
 			Spongebob.fillPolygon(LArm);
@@ -130,7 +132,7 @@ public class OceanSponge extends JFrame implements KeyListener {
 		}
 
 		public void draw_Inside() {
-
+			System.out.println("Inside drawn");
 			Spongebob.setColor(new Color(204, 204, 0));
 			for (int i = 0; i <= 50; i++) {
 				int size = (int) (Math.random() * (width / 10));
@@ -407,7 +409,7 @@ public class OceanSponge extends JFrame implements KeyListener {
 
 		public Pain() {
 			setPreferredSize(new Dimension(600, 800));
-			System.out.print("I have been called consturctor");
+
 		}
 	}
 
