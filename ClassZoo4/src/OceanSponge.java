@@ -6,6 +6,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class OceanSponge extends JFrame implements KeyListener {
+	
+	public OceanSponge(){
+		init();
+		setVisible(true);
+	}
+	
 	Pain pane = new Pain();
 	Polygon RArm = new Polygon();
 	Polygon LArm = new Polygon();
@@ -34,6 +40,7 @@ public class OceanSponge extends JFrame implements KeyListener {
 	public void init() {
 		addKeyListener(this);
 		add(pane);
+		pack();
 	}
 
 	public void keyPressed(KeyEvent arg0) {
@@ -48,7 +55,6 @@ public class OceanSponge extends JFrame implements KeyListener {
 
 	@SuppressWarnings("serial")
 	class Pain extends JPanel {
-
 		Graphics2D Spongebob;
 		int x = 0;
 		int y = 0;
@@ -57,13 +63,14 @@ public class OceanSponge extends JFrame implements KeyListener {
 
 		@Override
 		public void paintComponent(Graphics g) {
+			Spongebob = (Graphics2D) g;
 			System.out.print("HI I HAVE BEEN PAINTED");
+			if(Spongebob != null){
 			drawHabitat(g);
 			drawAnimal('N');
+			}
 			getWidth();
 			getHeight();
-			Spongebob = (Graphics2D) g;
-
 		}
 
 		private void drawAnimal(Character key) {
@@ -399,6 +406,7 @@ public class OceanSponge extends JFrame implements KeyListener {
 		}
 
 		public Pain() {
+			setPreferredSize(new Dimension(600, 800));
 			System.out.print("I have been called consturctor");
 		}
 	}
@@ -413,8 +421,6 @@ public class OceanSponge extends JFrame implements KeyListener {
 			@Override
 			public void run() {
 				OceanSponge ex = new OceanSponge();
-				ex.setVisible(true);
-
 			}
 		});
 

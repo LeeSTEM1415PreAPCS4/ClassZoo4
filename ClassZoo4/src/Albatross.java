@@ -2,12 +2,14 @@ import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -76,7 +78,8 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		}
 	}
 	
-	private void drawAnimal(Graphics g){
+	private void drawAnimal(Graphics g0){
+		Graphics2D g = (Graphics2D) g0;
 		g.setColor(Color.white);
 		Polygon draw = new Polygon();
 		if(flying){
@@ -92,6 +95,7 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 		g.fillPolygon(draw);
 		g.setColor(Color.black);
 		g.drawPolygon(draw);
+		g.rotate(new Random().nextDouble()*0.02f-0.01f);
 	}
 	
 	private void drawHabitat(Graphics g)
@@ -151,6 +155,7 @@ public class Albatross extends Applet implements Runnable, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		System.out.println("test");
 		Point usePoint = new Point(0,0);
 		double distance = getMaximumSize().width*getMaximumSize().height;
 		for(Point p : locationsToLand){
