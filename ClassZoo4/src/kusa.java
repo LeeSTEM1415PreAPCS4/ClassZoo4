@@ -1,3 +1,4 @@
+//Emerson Shands
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,9 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-class DrawPanel extends JPanel {
+class DrawPanelbear extends JPanel {
 
-    private void doDrawing(Graphics g) {
+    private void Bear(Graphics g) {
         
         Graphics2D g2d = (Graphics2D) g;
        
@@ -137,13 +138,18 @@ class DrawPanel extends JPanel {
 	
 	
 	//trees
+	g2d.setColor(new Color(131,92,59));
+	g2d.fillRect(40, 0, 200, 1000);
+	g2d.setColor(new Color(112,69,46));
+    
+
     }
 
     @Override
     public void paintComponent(Graphics g) {
         
         super.paintComponent(g);
-        doDrawing(g);
+        Bear(g);
     }
 }
 
@@ -174,3 +180,4 @@ public class kusa extends JFrame {
         });
     }
 }
+	
