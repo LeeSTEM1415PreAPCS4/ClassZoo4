@@ -1,15 +1,18 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 //import java.awt.Rectangle;
 //import java.awt.TexturePaint;
 import java.util.Random;
+
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 //import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 //import java.awt.image.BufferedImage;
@@ -19,11 +22,11 @@ import java.awt.Toolkit;
 
 
  @SuppressWarnings("serial")
-public class Jellyfish extends JFrame {
+public class JellyBelly extends JFrame {
 	 private int count=0;
 	
 
-		public Jellyfish() {
+		public JellyBelly() {
 	        initUI();
 	    }
 
@@ -46,7 +49,7 @@ public class Jellyfish extends JFrame {
 	        SwingUtilities.invokeLater(new Runnable() {
 	            @Override
 	            public void run() {
-	                Jellyfish ex = new Jellyfish();
+	                JellyBelly ex = new JellyBelly();
 	                ex.setVisible(true);
 	            }
 	        });
@@ -77,7 +80,7 @@ public class Jellyfish extends JFrame {
 	   	public void keyPressed(KeyEvent arg0) {
 	   	switch (arg0.getKeyCode()){
    		 case KeyEvent.VK_LEFT:
-   			 if(jx>=wai-wai+3)
+   			 if(jx>=3)
    				 jx--;
    			 break;
    		 case KeyEvent.VK_RIGHT:
@@ -85,7 +88,7 @@ public class Jellyfish extends JFrame {
    				 jx++;
    			 break;
    		 case KeyEvent.VK_UP:
-   			 if(jy>=ehx-ehx+3)
+   			 if(jy>=3)
    				 jy--;
    			 break;
    		 case KeyEvent.VK_DOWN:
@@ -111,10 +114,9 @@ public class Jellyfish extends JFrame {
 	   		//sandytp = new TexturePaint(sandy, new Rectangle(10, 10, 100, 200));
 	   		//g2d.setPaint(sandytp);
 	   		//g2d.fillRect(0, 700, 1600, 200);
-
-	   		Random rndInt = new Random(62770);
 	   		
-
+	   		
+	   		Random rndInt = new Random(62770);
 	   		for (int z = 0; z<=40; z++)
 	   			{
 	   				int ex = rndInt.nextInt(1600);
@@ -125,6 +127,14 @@ public class Jellyfish extends JFrame {
 	   				g2d.fillOval(ex, why, 50, 50);
 	   			}
 	   		
+	   		//WRITES STUFF AND CHANGES FONT
+	   		Random rdInt = new Random();
+			Color random = new Color(rdInt.nextInt(243), rdInt.nextInt(243), rdInt.nextInt(243));
+			g2d.setFont(new Font("Impact", Font.TRUETYPE_FONT, 60)); 
+			g2d.setColor(random);
+			g2d.drawString("Use the arrow keys", 1000, 700);
+			g2d.drawString("to move the Jellyfish", 980, 775);
+
 	    }
 	   		
 	   	/*private void loadImages() {
@@ -239,6 +249,8 @@ public class Jellyfish extends JFrame {
 	    
 	    
  }
+ 
+ 
  
  
  
