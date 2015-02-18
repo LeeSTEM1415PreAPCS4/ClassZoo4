@@ -6,7 +6,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+//Jose Espinoza 
+//Period:4
   public class Penguin {
 	  JFrame frame;
 
