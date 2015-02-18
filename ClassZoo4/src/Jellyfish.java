@@ -20,11 +20,11 @@ import java.awt.Toolkit;
 
 
  @SuppressWarnings("serial")
-public class JellyBelly extends JFrame {
+public class Jellyfish extends JFrame {
 	 private int count=0;
 	
 
-		public JellyBelly() {
+		public Jellyfish() {
 	        initUI();
 	    }
 
@@ -47,7 +47,7 @@ public class JellyBelly extends JFrame {
 	        SwingUtilities.invokeLater(new Runnable() {
 	            @Override
 	            public void run() {
-	                JellyBelly ex = new JellyBelly();
+	                Jellyfish ex = new Jellyfish();
 	                ex.setVisible(true);
 	            }
 	        });
