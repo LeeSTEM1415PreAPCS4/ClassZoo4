@@ -198,9 +198,9 @@ class Pain extends JPanel {
 		}*/
 		Spongebob.setColor(new Color(255, 255, 255));
 		Spongebob.fillOval((x - width) + width / 5, (y - height) + width / 5,
-				width / 5, height / 5);
+				width / 4, height / 4);
 		Spongebob.fillOval((x - width) + width / 2, (y - height) + width / 5,
-				width / 5, height / 5);
+				width / 4, height / 4);
 		Spongebob.setColor(Color.blue);
 		if (Dir == "Right") {
 			Spongebob.fillOval((x - width) + width / 5 + (width / 10),
