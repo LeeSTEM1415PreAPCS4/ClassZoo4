@@ -1,10 +1,17 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
+/*
+ * Omar Shamaa
+ */
 public class OceanSponge extends JFrame implements KeyListener {
 	/**
 	 * 
@@ -67,6 +74,7 @@ class Pain extends JPanel {
 	/**
 	 *
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	/////////////Global Variables//////
 	Graphics2D Spongebob = null;
@@ -105,7 +113,7 @@ class Pain extends JPanel {
 		Spongebob = (Graphics2D) g;
 		System.out.println("Paint drawn");
 		drawHabitat(Spongebob);
-
+		
 		drawAnimal('N');
 	}
 	//////Draw Spongebob/////////////
@@ -123,7 +131,8 @@ class Pain extends JPanel {
 		Spongebob.fillPolygon(LPants);
 		Spongebob.fillPolygon(RPants);
 		Spongebob.fillRect(x - width, y - height, width, height);
-
+		
+		
 		if (key == 'N') {
 			if (oldx == 1 && oldy == 1) {
 				width = super.getWidth() / 5;
@@ -174,12 +183,19 @@ class Pain extends JPanel {
 		System.out.println(y);
 		System.out.println(Dir);
 		Spongebob.setColor(new Color(204, 204, 0));
-		for (int i = 0; i <= 50; i++) {
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File("res/Sponhebob.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Spongebob.drawImage(img, x-width, (int)((y-height)), width, (int)(height*.8), null);
+		/*for (int i = 0; i <= 50; i++) {
 			int size = (int) (Math.random() * (width / 10));
 			Spongebob.fillOval((x - width)
 					+ (int) (Math.random() * (width - size)), (y - height)
 					+ (int) (Math.random() * (height - size)), size, size);
-		}
+		}*/
 		Spongebob.setColor(new Color(255, 255, 255));
 		Spongebob.fillOval((x - width) + width / 5, (y - height) + width / 5,
 				width / 5, height / 5);
