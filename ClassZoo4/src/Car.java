@@ -1,5 +1,6 @@
 /*****************************
  * This only contains the car*
+ * Code by Elijah Pena       *
  *****************************/
 
 import javax.swing.*;

@@ -1,5 +1,6 @@
 /************************************************
  * This makes a Narwhal in a car with hydraulics*
+ * Code by Elijah Pena                          *
  ************************************************/
 
 import javax.swing.*;
