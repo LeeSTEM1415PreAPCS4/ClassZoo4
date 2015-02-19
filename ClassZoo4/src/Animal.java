@@ -1,6 +1,6 @@
 /************************************************
  * This makes a Narwhal in a car with hydraulics*
- * Code by Elijah Pena                          *
+ * Code by Elijah Peña                          *
  ************************************************/
 
 import javax.swing.*;
@@ -104,8 +104,8 @@ final public class Animal {
 				o -= 1;
 			}
 			car1.setGraphics(g2d);
-			car1.drawMe();
-			car1.run();
+			car1.drawMe(k-100, l+175);
+			//car1.run();
 		}
 
 	}

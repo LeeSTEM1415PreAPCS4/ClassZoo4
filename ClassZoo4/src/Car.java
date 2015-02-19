@@ -1,6 +1,6 @@
 /*****************************
  * This only contains the car*
- * Code by Elijah Pena       *
+ * Code by Elijah Peña       *
  *****************************/
 
 import javax.swing.*;
@@ -24,9 +24,10 @@ final public class Car {
 	public void setGraphics(Graphics2D g){
 		g2d=g;
 	}
-	public void drawMe() {
-		//GradientPaint gp1 = new GradientPaint(0,0,Color.cyan,15,15,Color.magenta,true);
-		//g2d.setPaint(gp1);
+	public void drawMe(int carX, int carY) {
+		window.reset();
+		GradientPaint gp1 = new GradientPaint(0,0,Color.cyan,15,15,Color.magenta,true);
+		g2d.setPaint(gp1);
 		System.out.println("X="+carX);
 		System.out.println("Y="+carY);
 		HydroCar.reset();
@@ -47,7 +48,7 @@ final public class Car {
 		g2d.fillArc(carX+385,carY-30,30,30,-90,180);
 		//Stuff for the car window
 		g2d.setColor(new Color(0,0,255));
-		//g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,10*.03f));//transparency for window
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,10*.03f));//transparency for window
 		window.addPoint(carX+100, carY-175);//Top Left Window
 		window.addPoint(carX+250, carY-175);//Top Right Window
 		window.addPoint(carX+300, carY-30);//Bottom Right Window
@@ -55,7 +56,7 @@ final public class Car {
 		g2d.fillPolygon(window);
 		
 	}
-	public void run() {
+	/*public void run() {
 		
 		while (true) {
 			
@@ -88,5 +89,5 @@ final public class Car {
 			//System.out.println("Run Ran");
 			this.drawMe();
 		}
-	}
+	}*/
 }
