@@ -22,14 +22,19 @@ final public class Shark {
 		
 	}
 	
-	private void go() {
+	private void go() { 
+		//creates jframe panel
 		frame = new JFrame("shARK");
+		
+		//closes jframe panel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		drawPanel = new DrawPanel();
 		
 		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
 		
+		
+		// sets size + open location for jframe panel
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setSize(800, 800);
@@ -41,7 +46,7 @@ final public class Shark {
 
 	
 	class DrawPanel extends JPanel {
-		
+		// creates new bubbles
 		 Bubble b1 = new Bubble();
 		 Bubble b2 = new Bubble();
 		 Bubble b3 = new Bubble();
@@ -59,6 +64,17 @@ final public class Shark {
 
 		public void paintComponent(Graphics g) {
 			
+			
+			   super.paintComponent(g);  // dis is tha bg + gradient
+		        Graphics2D g2d = (Graphics2D) g;
+		        Color color1 = getBackground();
+		        Color color2 = color1.darker();
+		        int w = getWidth();
+		        int h = getHeight();
+		        GradientPaint gp = new GradientPaint(
+		            0, 0, color1, 0, h, color2);
+		        g2d.setPaint(gp);
+		        g2d.fillRect(0, 0, w, h);
 			
 	        
 			g.setColor(Color.decode("#15415E"));
