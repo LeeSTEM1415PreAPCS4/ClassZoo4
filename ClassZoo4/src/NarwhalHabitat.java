@@ -2,6 +2,8 @@ import java.awt.*;
 import java.applet.*;
 import java.util.Random;
 
+//Elijah Pena
+
 public class NarwhalHabitat extends Applet{
 	
 	public void paint(Graphics g)
