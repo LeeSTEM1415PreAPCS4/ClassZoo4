@@ -1,4 +1,4 @@
-//Marquita :)
+////Marquita Walker////
 
 import java.awt.Color;
 import java.awt.Font;
@@ -32,13 +32,14 @@ public class Jellyfish extends JFrame {
 
 	    public final void initUI() {
 
+	    	////Draws the panel and sets size and title////
 	        DrawPanel panel = new DrawPanel();
 	        add(panel);
 	        
 	        Toolkit tk = Toolkit.getDefaultToolkit();
-	        int wai = ((int) tk.getScreenSize().getWidth());
-	        int ehx = ((int) tk.getScreenSize().getHeight());
-	        setSize(wai, ehx);
+	        int SWidth = ((int) tk.getScreenSize().getWidth());
+	        int SHeight = ((int) tk.getScreenSize().getHeight());
+	        setSize(SWidth, SHeight);
 	        setTitle("Jellyfish");
 	        setLocationRelativeTo(null);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,13 +61,25 @@ public class Jellyfish extends JFrame {
 	    
 	    {
 		Toolkit tk = Toolkit.getDefaultToolkit();
-		int wai = ((int) tk.getScreenSize().getWidth());
-		int ehx = ((int) tk.getScreenSize().getHeight());	
+		int SWidth = ((int) tk.getScreenSize().getWidth());
+		int SHeight = ((int) tk.getScreenSize().getHeight());	
 	   	private  int jx = 400;
 	   	private  int jy = 200;
 	   	Graphics2D Jelly;
 	   	private boolean eyesopen;
 	   	KeyEvent arg0;
+	   	Bubblesss b1= new Bubblesss();
+	   	Bubblesss b2= new Bubblesss();
+	   	Bubblesss b3= new Bubblesss();
+	   	Bubblesss b4= new Bubblesss();
+	   	Bubblesss b5= new Bubblesss();
+	   	Bubblesss b6 = new Bubblesss();
+	   	Bubblesss b7= new Bubblesss();
+	   	Bubblesss b8= new Bubblesss();
+	   	int yoff;
+	   	
+	   	
+	   	
 	   	//private Thread runner;
 	   //private BufferedImage sandy;
 	   //private TexturePaint sandytp;
@@ -77,17 +90,18 @@ public class Jellyfish extends JFrame {
 	   		addKeyListener(this);
 	   	}
 	   	
-	   	public void keyPressed(KeyEvent arg0) {
+	   	public void keyReleased(KeyEvent arg0) {
+	   	////Moves the Jellyfish using the arrow keys////
 	   	switch (arg0.getKeyCode()){
    		 case KeyEvent.VK_LEFT:
    			 if(jx>=3)
    				 jx=jx-1;
-   			 System.out.println("left"+ " " +jx);
+   			System.out.println("left"+ " " +jx);
    			 break;
    		 case KeyEvent.VK_RIGHT:
-   			 if(jx<=wai-200)
+   			 if(jx<=SWidth-200)
    				 jx=jx+1;
-   			 System.out.println("right" + " " +jx);
+   			 //System.out.println("right" + " " +jx);
    			 break;
    		 case KeyEvent.VK_UP:
    			 if(jy>=3)
@@ -95,7 +109,7 @@ public class Jellyfish extends JFrame {
    			 System.out.println("up");
    			 break;
    		 case KeyEvent.VK_DOWN:
-   			 if(jy<=ehx-ehx+475)
+   			 if(jy<=SHeight-SHeight+475)
    			 jy=jy+1;
    			 break;
    		 }
@@ -111,7 +125,8 @@ public class Jellyfish extends JFrame {
 	   	}
 	   	
 	   private void drawHabitat(Graphics2D g2d) {
-	   		Color water = new Color (39, 128, 216);
+	   		////Draws the water habitat////
+		   Color water = new Color (39, 128, 216);
 	   		g2d.setColor(water);
 	   		g2d.fillRect(0, 0, 1600, 1000);
 	   		//sandytp = new TexturePaint(sandy, new Rectangle(10, 10, 100, 200));
@@ -119,7 +134,7 @@ public class Jellyfish extends JFrame {
 	   		//g2d.fillRect(0, 700, 1600, 200);
 	   		
 	   		
-	   		Random rndInt = new Random(62770);
+	   			/*Random rndInt = new Random();
 	   		for (int z = 0; z<=40; z++)
 	   			{
 	   				int ex = rndInt.nextInt(1600);
@@ -128,9 +143,16 @@ public class Jellyfish extends JFrame {
 	   				g2d.drawOval(ex, why, 50, 50);
 	   				g2d.setColor(Color.white);
 	   				g2d.fillOval(ex, why, 50, 50);
-	   			}
+	   			}*/
 	   		
-	   		
+	   		b1.moveIt(g2d);
+	   		b2.moveIt(g2d);
+	   		b3.moveIt(g2d);
+	   		b4.moveIt(g2d);
+	   		b5.moveIt(g2d);
+	   		b6.moveIt(g2d);
+	   		b7.moveIt(g2d);
+	   		b8.moveIt(g2d);
 
 	    }
 	   		
@@ -158,7 +180,7 @@ public class Jellyfish extends JFrame {
 	   		
 
 	   				
-	   			//Draws the Jellyfish
+	   			////Draws the Jellyfish////
 	   				
 	   				Jelly.setColor(Color.magenta);
 	   				
@@ -177,10 +199,9 @@ public class Jellyfish extends JFrame {
 	   					xxx = xxx - 15;
 	   					
 	   				}
-	   				
 	   				if (eyesopen==true)
 	   				{
-	   				//Draw Eyes
+	   				////Draws Eyes////
 	   				Jelly.setColor(Color.black);
 	   				Jelly.fillOval(jx+60, jy+75, 25, 25);
 	   				Jelly.fillOval(jx+110, jy+75, 25, 25);	
@@ -188,13 +209,14 @@ public class Jellyfish extends JFrame {
 	   				
 	   				else
 	   				{
-	   				//Blink Eyes
+	   				////Blinks Eyes////
 	   					Jelly.setColor(Color.magenta);
 	   					Jelly.fillOval(jx+60, jy+75, 25, 25);
 	   					Jelly.fillOval(jx+110, jy+75, 25, 25);
 	   					
+	   					
 	   				}
-	   			//WRITES STUFF AND CHANGES FONT
+	   			////Writes text on the screen////
 	   		Random rdInt = new Random();
 			Color random = new Color(rdInt.nextInt(75)+100, rdInt.nextInt(75), rdInt.nextInt(43)+200);
 			Jelly.setFont(new Font("Impact", Font.TRUETYPE_FONT, 60)); 
@@ -223,7 +245,7 @@ public class Jellyfish extends JFrame {
 
 
 	   @Override
-	   public void keyReleased(KeyEvent e) {}
+	   public void keyPressed(KeyEvent e) {}
 
 	   @Override
 	   public void keyTyped(KeyEvent e) {
@@ -236,5 +258,49 @@ public class Jellyfish extends JFrame {
 	    
  }
  
+ class Bubblesss
+ {
+	 Graphics2D ocean;
+	 int ex;
+	 int why;
+	 int yoff;
+     Toolkit tk = Toolkit.getDefaultToolkit();
+     int SWidth = ((int) tk.getScreenSize().getWidth());
+     int SHeight = ((int) tk.getScreenSize().getHeight());
+	 
+	 public Bubblesss()
+	 {
+		 Random rand = new Random();
+		 
+			 ex = rand.nextInt(1600);
+			 why = rand.nextInt(700);
+	
+	 }
+	 
+	 public void drawBubbles(Graphics2D g2d)
+	 {
+			g2d.setColor(Color.black);
+			g2d.drawOval(ex, why, 50, 50);
+			g2d.setColor(Color.white);
+			g2d.fillOval(ex, why, 50, 50);
+
+	 }
+	 
+	 public void moveIt(Graphics2D g2d)
+	 {
+				if(why<=SHeight)
+					why-=5;
+				if (why<=0)
+					{why = SHeight;}
+				drawBubbles(g2d);
+	 }
+	 
+	/* public void moveY(Graphics2D g2d)
+	 {
+		 why+=yoff;
+		drawBubbles(g2d);
+	 }*/
+ }
  
-  
+ 
+ 
