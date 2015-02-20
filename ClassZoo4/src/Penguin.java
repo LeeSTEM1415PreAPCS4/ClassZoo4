@@ -35,7 +35,7 @@ import javax.swing.JPanel;
        frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
 
        frame.setResizable(false);
-       frame.setSize(400, 600);
+       frame.setSize(800, 600);
        frame.setLocationByPlatform(true);
 
        frame.setVisible(true);
@@ -50,8 +50,11 @@ import javax.swing.JPanel;
 	  { 	  
 		 Graphics2D g2d = (Graphics2D) g;
 		 
+	//Gradient would be gray and black
 		 GradientPaint gp1 = new GradientPaint(10, 5,
                  Color.gray, 30, 20, Color.black, true);
+		 
+		 //drawing the sky 
 		 g.setColor(new Color(130,199,236));    		
 	   	g.fillRect(0, 0, 800,220);
 		 // drawing body
@@ -62,7 +65,7 @@ import javax.swing.JPanel;
          g.fillOval(100+oneX,100+oneY,100,125);
          g.fillOval(125+oneX,80+oneY,15,15);
      	g.fillOval(160+oneX,80+oneY,15,15);
-         // drawing eyes and body 
+         // drawing both eyes and part of the body 
      	g.setColor(Color.white);
           g.fillOval(125+oneX,80+oneY,15,15);
           g.fillOval(112+oneX,114+oneY,75,90);
