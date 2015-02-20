@@ -161,7 +161,9 @@ class Pain extends JPanel {
 		if (x <= 0 - width) {
 			if(imgn==1){
 				imgn=0;
-			}else{
+			}else if(imgn==0){
+				imgn=2;
+			}else if(imgn==2){
 				imgn=1;
 			}
 			x = (int) super.getWidth() - 5;
@@ -169,9 +171,12 @@ class Pain extends JPanel {
 			x = 0 + 5;
 			if(imgn==1){
 				imgn=0;
-			}else{
+			}else if(imgn==0){
+				imgn=2;
+			}else if(imgn==2){
 				imgn=1;
 			}
+			
 		} else if (y <= 0 - height) {
 			y = (int) super.getHeight();
 			
@@ -190,9 +195,11 @@ class Pain extends JPanel {
 		BufferedImage img = null;
 		try {
 			if(imgn==1){
-				img = ImageIO.read(new File("res/SB_ExtrSp_Scr_10.PNG"));
-			}else{
+				img = ImageIO.read(new File("res/53.jpg"));
+			}else if(imgn==0){
 				img = ImageIO.read(new File("res/Bbpolicestation.JPG"));
+			}else if(imgn==2){
+				img = ImageIO.read(new File("res/BikiniBottomJail.png"));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
