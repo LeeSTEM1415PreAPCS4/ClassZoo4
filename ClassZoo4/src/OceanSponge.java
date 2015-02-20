@@ -105,6 +105,7 @@ class Pain extends JPanel {
 	Polygon Belt2 = new Polygon();
 	Polygon Belt3 = new Polygon();
 	String Dir;
+	int imgn=1;
 	int oldx = 1;
 	int oldy = 1;
 	////////////////////////////////////////////
@@ -131,7 +132,7 @@ class Pain extends JPanel {
 		Spongebob.fillPolygon(LPants);
 		Spongebob.fillPolygon(RPants);
 		Spongebob.fillRect(x - width, y - height, width, height);
-		
+	
 		
 		if (key == 'N') {
 			if (oldx == 1 && oldy == 1) {
@@ -158,12 +159,22 @@ class Pain extends JPanel {
 		}
 
 		if (x <= 0 - width) {
+			if(imgn==1){
+				imgn=0;
+			}else{
+				imgn=1;
+			}
 			x = (int) super.getWidth() - 5;
 		} else if (x >= (int) super.getWidth() + width) {
 			x = 0 + 5;
+			if(imgn==1){
+				imgn=0;
+			}else{
+				imgn=1;
+			}
 		} else if (y <= 0 - height) {
 			y = (int) super.getHeight();
-			;
+			
 		} else if (y >= (int) super.getHeight() + height) {
 			y = height;
 		}
@@ -174,8 +185,19 @@ class Pain extends JPanel {
 	}
 	//////Draw Spongebobs Background//////////////
 	public void drawHabitat(Graphics g) {
-		g.setColor(new Color(155, 155, 255));
-		g.fillRect(0, 0, super.getWidth(), super.getHeight());
+		/*g.setColor(new Color(155, 155, 255));
+		g.fillRect(0, 0, super.getWidth(), super.getHeight());*/
+		BufferedImage img = null;
+		try {
+			if(imgn==1){
+				img = ImageIO.read(new File("res/SB_ExtrSp_Scr_10.PNG"));
+			}else{
+				img = ImageIO.read(new File("res/Bbpolicestation.JPG"));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		g.drawImage(img, 0, 0, super.getWidth(), super.getHeight(), null);
 	}
 
 	public void draw_Inside() {
