@@ -76,6 +76,9 @@ public class Jellyfish extends JFrame {
 	   	Bubblesss b6 = new Bubblesss();
 	   	Bubblesss b7= new Bubblesss();
 	   	Bubblesss b8= new Bubblesss();
+		Bubblesss b9= new Bubblesss();
+		Bubblesss b10= new Bubblesss();
+		Bubblesss b11= new Bubblesss();
 	   	int yoff;
 	   	
 	   	
@@ -145,6 +148,7 @@ public class Jellyfish extends JFrame {
 	   				g2d.fillOval(ex, why, 50, 50);
 	   			}*/
 	   		
+	   		
 	   		b1.moveIt(g2d);
 	   		b2.moveIt(g2d);
 	   		b3.moveIt(g2d);
@@ -153,6 +157,10 @@ public class Jellyfish extends JFrame {
 	   		b6.moveIt(g2d);
 	   		b7.moveIt(g2d);
 	   		b8.moveIt(g2d);
+	   		b9.moveIt(g2d);
+	   		b10.moveIt(g2d);
+	   		b11.moveIt(g2d);
+	   		
 
 	    }
 	   		
@@ -263,6 +271,7 @@ public class Jellyfish extends JFrame {
 	 Graphics2D ocean;
 	 int ex;
 	 int why;
+	 int speed;
 	 int yoff;
      Toolkit tk = Toolkit.getDefaultToolkit();
      int SWidth = ((int) tk.getScreenSize().getWidth());
@@ -271,9 +280,11 @@ public class Jellyfish extends JFrame {
 	 public Bubblesss()
 	 {
 		 Random rand = new Random();
-		 
-			 ex = rand.nextInt(1600);
+		 Random spd = new Random();
+			 
+		 	ex = rand.nextInt(1600);
 			 why = rand.nextInt(700);
+			 speed = spd.nextInt(5)+1;
 	
 	 }
 	 
@@ -283,13 +294,12 @@ public class Jellyfish extends JFrame {
 			g2d.drawOval(ex, why, 50, 50);
 			g2d.setColor(Color.white);
 			g2d.fillOval(ex, why, 50, 50);
-
 	 }
 	 
 	 public void moveIt(Graphics2D g2d)
 	 {
 				if(why<=SHeight)
-					why-=5;
+					why-=speed;
 				if (why<=0)
 					{why = SHeight;}
 				drawBubbles(g2d);
