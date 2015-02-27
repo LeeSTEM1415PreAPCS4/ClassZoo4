@@ -1,24 +1,34 @@
+
 ////Marquita Walker////
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.TexturePaint;
+//import java.awt.image.BufferedImage;
+import java.awt.Toolkit;
+//import java.io.File;
+//import java.io.IOException;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 //import java.awt.Rectangle;
 //import java.awt.TexturePaint;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 //import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-//import java.awt.image.BufferedImage;
-import java.awt.Toolkit;
-//import java.io.File;
-//import java.io.IOException;
 
 
  @SuppressWarnings("serial")
@@ -76,16 +86,17 @@ public class Jellyfish extends JFrame {
 	   	Bubblesss b6 = new Bubblesss();
 	   	Bubblesss b7= new Bubblesss();
 	   	Bubblesss b8= new Bubblesss();
-		Bubblesss b9= new Bubblesss();
-		Bubblesss b10= new Bubblesss();
-		Bubblesss b11= new Bubblesss();
 	   	int yoff;
 	   	
 	   	
 	   	
 	   	//private Thread runner;
-	   //private BufferedImage sandy;
-	   //private TexturePaint sandytp;
+	   private BufferedImage sandy;
+	   private TexturePaint sandytp;
+	   
+	   public DrawPanel(){
+		   loadImages();
+	   }
 	   	 
 
 	   	public void init(){
@@ -98,22 +109,22 @@ public class Jellyfish extends JFrame {
 	   	switch (arg0.getKeyCode()){
    		 case KeyEvent.VK_LEFT:
    			 if(jx>=3)
-   				 jx=jx-1;
+   				 jx--;
    			System.out.println("left"+ " " +jx);
    			 break;
    		 case KeyEvent.VK_RIGHT:
    			 if(jx<=SWidth-200)
-   				 jx=jx+1;
+   				 jx++;
    			 //System.out.println("right" + " " +jx);
    			 break;
    		 case KeyEvent.VK_UP:
    			 if(jy>=3)
-   				 jy=jy-1;
+   				 jy--;
    			 System.out.println("up");
    			 break;
    		 case KeyEvent.VK_DOWN:
    			 if(jy<=SHeight-SHeight+475)
-   			 jy=jy+1;
+   			 jy++;
    			 break;
    		 }
 	   	 
@@ -132,9 +143,9 @@ public class Jellyfish extends JFrame {
 		   Color water = new Color (39, 128, 216);
 	   		g2d.setColor(water);
 	   		g2d.fillRect(0, 0, 1600, 1000);
-	   		//sandytp = new TexturePaint(sandy, new Rectangle(10, 10, 100, 200));
-	   		//g2d.setPaint(sandytp);
-	   		//g2d.fillRect(0, 700, 1600, 200);
+	   		sandytp = new TexturePaint(sandy, new Rectangle(10, 10, 100, 200));
+	   		g2d.setPaint(sandytp);
+	   		g2d.fillRect(0, 700, 1600, 200);
 	   		
 	   		
 	   			/*Random rndInt = new Random();
@@ -148,7 +159,6 @@ public class Jellyfish extends JFrame {
 	   				g2d.fillOval(ex, why, 50, 50);
 	   			}*/
 	   		
-	   		
 	   		b1.moveIt(g2d);
 	   		b2.moveIt(g2d);
 	   		b3.moveIt(g2d);
@@ -157,21 +167,17 @@ public class Jellyfish extends JFrame {
 	   		b6.moveIt(g2d);
 	   		b7.moveIt(g2d);
 	   		b8.moveIt(g2d);
-	   		b9.moveIt(g2d);
-	   		b10.moveIt(g2d);
-	   		b11.moveIt(g2d);
-	   		
 
 	    }
 	   		
-	   	/*private void loadImages() {
+	   	private void loadImages() {
 	   		try{
-	   			sandy = ImageIO.read(this.getClass().getResource("sandy.jpg"));
+	   			sandy = ImageIO.read(new File("res/sand.jpg"));
 	   		} catch (IOException ex) {
 	   			System.out.println("Uh, error!");
 	   			Logger.getLogger(DrawPanel.class.getName()).log(Level.SEVERE, null, ex);
 	   		}
-	   	}*/
+	   	}
 	   
 	   	private void drawAnimal(Graphics2D Jelly, KeyEvent arg0){
 	   		{
@@ -271,7 +277,6 @@ public class Jellyfish extends JFrame {
 	 Graphics2D ocean;
 	 int ex;
 	 int why;
-	 int speed;
 	 int yoff;
      Toolkit tk = Toolkit.getDefaultToolkit();
      int SWidth = ((int) tk.getScreenSize().getWidth());
@@ -280,11 +285,9 @@ public class Jellyfish extends JFrame {
 	 public Bubblesss()
 	 {
 		 Random rand = new Random();
-		 Random spd = new Random();
-			 
-		 	ex = rand.nextInt(1600);
+		 
+			 ex = rand.nextInt(1600);
 			 why = rand.nextInt(700);
-			 speed = spd.nextInt(5)+1;
 	
 	 }
 	 
@@ -294,12 +297,13 @@ public class Jellyfish extends JFrame {
 			g2d.drawOval(ex, why, 50, 50);
 			g2d.setColor(Color.white);
 			g2d.fillOval(ex, why, 50, 50);
+
 	 }
 	 
 	 public void moveIt(Graphics2D g2d)
 	 {
 				if(why<=SHeight)
-					why-=speed;
+					why-=5;
 				if (why<=0)
 					{why = SHeight;}
 				drawBubbles(g2d);
@@ -311,6 +315,5 @@ public class Jellyfish extends JFrame {
 		drawBubbles(g2d);
 	 }*/
  }
- 
  
  
