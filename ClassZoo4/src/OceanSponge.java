@@ -2,10 +2,16 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -44,7 +50,18 @@ public class OceanSponge extends JFrame implements KeyListener {
 			System.out.println((arg0.getKeyCode()) + "Is the keycode");
 			pane.drawAnimal(key);
 			super.repaint();
-
+		}else if(arg0.getKeyCode()==37){
+			pane.drawAnimal('a');
+			super.repaint();
+		}else if(arg0.getKeyCode()==39){
+			pane.drawAnimal('d');
+			super.repaint();
+		}else if(arg0.getKeyCode()==38){
+			pane.drawAnimal('w');
+			super.repaint();
+		}else if(arg0.getKeyCode()==40){
+			pane.drawAnimal('s');
+			super.repaint();
 		}
 		System.out.println(arg0.getKeyCode());
 	}
@@ -204,6 +221,7 @@ class Pain extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		  
 		g.drawImage(img, 0, 0, super.getWidth(), super.getHeight(), null);
 	}
 
