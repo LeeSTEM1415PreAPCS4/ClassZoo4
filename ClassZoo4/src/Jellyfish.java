@@ -42,15 +42,16 @@ public class Jellyfish extends JFrame {
 
 	    public final void initUI() {
 
-	    	////Draws the panel and sets size and title////
+	    	////Draws the panel/// 
 	        DrawPanel panel = new DrawPanel();
 	        add(panel);
 	        
+	        ////Sets size of the panel////
 	        Toolkit tk = Toolkit.getDefaultToolkit();
 	        int SWidth = ((int) tk.getScreenSize().getWidth());
 	        int SHeight = ((int) tk.getScreenSize().getHeight());
 	        setSize(SWidth, SHeight);
-	        setTitle("Jellyfish");
+	        setTitle("");
 	        setLocationRelativeTo(null);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    }
@@ -70,6 +71,7 @@ public class Jellyfish extends JFrame {
 		class DrawPanel extends JPanel implements KeyListener
 	    
 	    {
+			////Declaring Variables////
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		int SWidth = ((int) tk.getScreenSize().getWidth());
 		int SHeight = ((int) tk.getScreenSize().getHeight());	
@@ -87,16 +89,10 @@ public class Jellyfish extends JFrame {
 	   	Bubblesss b7= new Bubblesss();
 	   	Bubblesss b8= new Bubblesss();
 	   	int yoff;
-	   	
-	   	
-	   	
-	   	//private Thread runner;
 	   private BufferedImage sandy;
 	   private TexturePaint sandytp;
 	   
-	   public DrawPanel(){
-		   loadImages();
-	   }
+	  
 	   	 
 
 	   	public void init(){
@@ -110,7 +106,7 @@ public class Jellyfish extends JFrame {
    		 case KeyEvent.VK_LEFT:
    			 if(jx>=3)
    				 jx--;
-   			System.out.println("left"+ " " +jx);
+   			//System.out.println("left"+ " " +jx);
    			 break;
    		 case KeyEvent.VK_RIGHT:
    			 if(jx<=SWidth-200)
@@ -131,7 +127,7 @@ public class Jellyfish extends JFrame {
 	   }
 	   	private void theDrawing(Graphics g)  {
 	   		Jelly = (Graphics2D) g;
-	   			//loadImages();
+	   			loadImages();
 	   			drawHabitat(Jelly);
 				drawAnimal(Jelly, arg0);
 				init();
@@ -143,6 +139,7 @@ public class Jellyfish extends JFrame {
 		   Color water = new Color (39, 128, 216);
 	   		g2d.setColor(water);
 	   		g2d.fillRect(0, 0, 1600, 1000);
+	   		////Creates texture paint////
 	   		sandytp = new TexturePaint(sandy, new Rectangle(10, 10, 100, 200));
 	   		g2d.setPaint(sandytp);
 	   		g2d.fillRect(0, 700, 1600, 200);
@@ -159,6 +156,7 @@ public class Jellyfish extends JFrame {
 	   				g2d.fillOval(ex, why, 50, 50);
 	   			}*/
 	   		
+	   		////Draws Bubbles from the class Bubbles////
 	   		b1.moveIt(g2d);
 	   		b2.moveIt(g2d);
 	   		b3.moveIt(g2d);
@@ -171,6 +169,7 @@ public class Jellyfish extends JFrame {
 	    }
 	   		
 	   	private void loadImages() {
+	   		////Loads the image used in the texture paint////
 	   		try{
 	   			sandy = ImageIO.read(new File("res/sand.jpg"));
 	   		} catch (IOException ex) {
@@ -182,7 +181,7 @@ public class Jellyfish extends JFrame {
 	   	private void drawAnimal(Graphics2D Jelly, KeyEvent arg0){
 	   		{
 	   			{
-	   			
+	   			////Sets when the Jellyfish will blink////
 	   		    	 if (eyesopen&&count>50)
 	   			    	  {eyesopen = false;
 	   			    	  count=0;}
@@ -194,7 +193,7 @@ public class Jellyfish extends JFrame {
 	   		
 
 	   				
-	   			////Draws the Jellyfish////
+	   			////Draws the Jellyfish ////
 	   				
 	   				Jelly.setColor(Color.magenta);
 	   				
@@ -274,6 +273,7 @@ public class Jellyfish extends JFrame {
  
  class Bubblesss
  {
+	 ////declares variables////
 	 Graphics2D ocean;
 	 int ex;
 	 int why;
@@ -284,8 +284,8 @@ public class Jellyfish extends JFrame {
 	 
 	 public Bubblesss()
 	 {
+		 ////creates 'Random' variables////
 		 Random rand = new Random();
-		 
 			 ex = rand.nextInt(1600);
 			 why = rand.nextInt(700);
 	
@@ -293,6 +293,7 @@ public class Jellyfish extends JFrame {
 	 
 	 public void drawBubbles(Graphics2D g2d)
 	 {
+		 ////draws bubbles////
 			g2d.setColor(Color.black);
 			g2d.drawOval(ex, why, 50, 50);
 			g2d.setColor(Color.white);
@@ -302,6 +303,7 @@ public class Jellyfish extends JFrame {
 	 
 	 public void moveIt(Graphics2D g2d)
 	 {
+		 ////moves the bubbles////
 				if(why<=SHeight)
 					why-=5;
 				if (why<=0)
@@ -309,11 +311,6 @@ public class Jellyfish extends JFrame {
 				drawBubbles(g2d);
 	 }
 	 
-	/* public void moveY(Graphics2D g2d)
-	 {
-		 why+=yoff;
-		drawBubbles(g2d);
-	 }*/
  }
  
  
